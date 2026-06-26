@@ -45,9 +45,22 @@ au lieu d'envoyer (les coordonnées email / téléphone / Behance restent cliqua
 
 ---
 
-## 🚀 4. Mettre le site en ligne (gratuit)
-- **Netlify Drop** : va sur https://app.netlify.com/drop et glisse-dépose tout le dossier. En ligne en 30 s.
-- **GitHub Pages** : pousse le dossier dans un repo, active Pages dans les réglages.
+## 🚀 4. Site en ligne
+Le site est hébergé **gratuitement** sur **GitHub Pages** :
+
+### 🌐 https://yuribausch.github.io/portfolio/
+
+- **Dépôt** : https://github.com/YuriBausch/portfolio (branche `main`)
+- **Hébergement** : GitHub Pages (gratuit, HTTPS automatique)
+
+### Mettre à jour le site en ligne
+Après avoir modifié un fichier en local, dans un terminal sur le dossier du projet :
+```bash
+git add -A
+git commit -m "Mise à jour du portfolio"
+git push
+```
+Le site se reconstruit tout seul en ~1 minute.
 
 ---
 
@@ -56,13 +69,10 @@ au lieu d'envoyer (les coordonnées email / téléphone / Behance restent cliqua
 index.html          → contenu et structure
 styles.css          → design (couleurs, typo, mise en page)
 script.js           → galeries, lightbox, menu mobile, formulaire
+favicon.ico         → icône de l'onglet
 assets/
-  photo.jpg         → TA PHOTO (à ajouter)
-  photo-placeholder.svg
-  gallery/          → images des projets (extraites du PDF)
-  pages/            → rendu des pages du PDF (référence, non utilisé sur le site)
-  images/           → images brutes extraites (référence)
+  photo.jpg         → ta photo de profil
+  CV-Yuri-Bausch.pdf→ ton CV (téléchargeable depuis le site)
+  favicon.svg, apple-touch-icon.png, favicon-16/32.png → icônes
+  gallery/          → images des projets (qualité max du PDF)
 ```
-
-> Les dossiers `assets/pages` et `assets/images` ne servent qu'à la référence et
-> peuvent être supprimés pour alléger le site avant la mise en ligne.
