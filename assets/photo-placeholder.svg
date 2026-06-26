@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <rect width="400" height="500" fill="#efece0"/>
+  <g fill="#2e2e2e">
+    <circle cx="200" cy="200" r="62"/>
+    <path d="M110 380c0-52 40-92 90-92s90 40 90 92v40H110z"/>
+  </g>
+  <circle cx="200" cy="200" r="62" fill="none" stroke="#e63b3b" stroke-width="4"/>
+  <text x="200" y="455" text-anchor="middle" font-family="Archivo, Arial, sans-serif"
+        font-size="20" font-weight="800" fill="#2e2e2e" letter-spacing="1">
+    VOTRE PHOTO ICI
+  </text>
+  <text x="200" y="480" text-anchor="middle" font-family="Arial, sans-serif"
+        font-size="13" fill="#e63b3b">
+    déposez assets/photo.jpg
+  </text>
+</svg>
