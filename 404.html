@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page introuvable — Yuri Bausch</title>
+  <link rel="icon" href="/portfolio/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg" />
+  <meta name="robots" content="noindex" />
+  <style>
+    :root { --cream:#f6f4e9; --ink:#2e2e2e; --red:#e63b3b; }
+    * { margin:0; box-sizing:border-box; }
+    body {
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background:radial-gradient(120% 90% at 80% 0%, #efece0 0%, transparent 55%), var(--cream);
+      color:var(--ink); font-family:system-ui, -apple-system, "Segoe UI", sans-serif;
+      text-align:center; padding:2rem;
+    }
+    .wrap { max-width:520px; }
+    .code {
+      font-weight:900; font-size:clamp(5rem,20vw,10rem); line-height:0.9;
+      letter-spacing:-3px; color:var(--ink);
+    }
+    .code span { color:var(--red); }
+    h1 { font-size:clamp(1.3rem,4vw,1.8rem); margin:1rem 0 0.6rem; }
+    p { color:#555049; margin-bottom:2rem; font-size:1.05rem; }
+    a {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      background:var(--ink); color:var(--cream); text-decoration:none;
+      font-weight:700; padding:0.85rem 1.6rem; border-radius:999px;
+      border:2px solid var(--ink); transition:background 0.2s, transform 0.2s;
+    }
+    a:hover { background:var(--red); border-color:var(--red); transform:translateY(-3px); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">4<span>0</span>4</div>
+    <h1>Cette page n'existe pas</h1>
+    <p>Le lien est peut-être cassé ou la page a été déplacée.</p>
+    <a href="/portfolio/">← Retour au portfolio</a>
+  </div>
+</body>
+</html>
