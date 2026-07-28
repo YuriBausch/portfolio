@@ -440,6 +440,9 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
 }
 .credit-card__role {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   align-self: flex-start;
   font-family: var(--display);
   font-weight: 700;
@@ -448,10 +451,11 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   color: #fff;
   background: var(--ink);
-  padding: 0.3rem 0.75rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.6rem;
   border-radius: 999px;
   margin-bottom: 0.9rem;
 }
+.credit-card__ico { font-size: 0.95rem; line-height: 1; }
 .credit-card__title {
   font-family: var(--display);
   font-weight: 900;
