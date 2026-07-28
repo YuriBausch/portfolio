@@ -36,6 +36,10 @@ const GALLERIES = {
   ],
 };
 
+// Base path for assets (set to "../" on the English page in /en/)
+const ASSET_BASE = window.ASSET_BASE || "";
+const asset = (p) => ASSET_BASE + p;
+
 // ---- Build galleries -------------------------------------------------
 const flatImages = []; // for lightbox navigation, grouped per gallery
 Object.entries(GALLERIES).forEach(([id, imgs]) => {
@@ -49,7 +53,7 @@ Object.entries(GALLERIES).forEach(([id, imgs]) => {
     fig.dataset.gallery = id;
     fig.dataset.index = i;
     const el = document.createElement("img");
-    el.src = img.src;
+    el.src = asset(img.src);
     el.alt = img.alt;
     el.loading = "lazy";
     fig.appendChild(el);
@@ -72,7 +76,7 @@ function openLightbox(gallery, index) {
 }
 function renderLightbox() {
   const img = GALLERIES[current.gallery][current.index];
-  lbImg.src = img.src;
+  lbImg.src = asset(img.src);
   lbImg.alt = img.alt;
 }
 function closeLightbox() {

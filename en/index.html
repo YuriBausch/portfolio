@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <title>Yuri Bausch — Community Manager & Brand Content · Open to a work-study placement</title>
+  <meta name="description" content="Portfolio of Yuri Bausch, Community Manager and Brand Content Creator, open to a work-study placement from September 2026 (Paris area). Communication strategy, branding, content creation and audiovisual production." />
+  <meta name="author" content="Yuri Bausch" />
+  <meta name="keywords" content="Yuri Bausch, Community Manager, Brand Content Creator, work-study, apprenticeship, communication, social media, branding, Paris" />
+  <link rel="canonical" href="https://yuribausch.github.io/portfolio/en/" />
+  <link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/" />
+  <link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Yuri Bausch — Portfolio" />
+  <meta property="og:title" content="Yuri Bausch — Community Manager & Brand Content Creator" />
+  <meta property="og:description" content="Open to a work-study placement from September 2026. Community management, brand content, branding and social media content creation." />
+  <meta property="og:url" content="https://yuribausch.github.io/portfolio/en/" />
+  <meta property="og:image" content="https://yuribausch.github.io/portfolio/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="profile:first_name" content="Yuri" />
+  <meta property="profile:last_name" content="Bausch" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Yuri Bausch — Community Manager & Brand Content Creator" />
+  <meta name="twitter:description" content="Open to a work-study placement from September 2026 in communication & brand content." />
+  <meta name="twitter:image" content="https://yuribausch.github.io/portfolio/assets/og-image.png" />
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yuri Bausch",
+    "alternateName": "Yuri Bausch Cardoso",
+    "jobTitle": "Community Manager & Brand Content Creator",
+    "description": "Community Manager and Brand Content Creator, open to a work-study placement from September 2026.",
+    "url": "https://yuribausch.github.io/portfolio/en/",
+    "image": "https://yuribausch.github.io/portfolio/assets/photo.webp",
+    "email": "mailto:yuri.bausch@gmail.com",
+    "address": { "@type": "PostalAddress", "addressRegion": "Île-de-France", "addressCountry": "FR" },
+    "seeks": { "@type": "Demand", "name": "Work-study placement in communication & brand content (September 2026)" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "ESD — École Supérieure du Digital, Paris" },
+      { "@type": "CollegeOrUniversity", "name": "IUT d'Angoulême" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/yuri-bausch-cardoso",
+      "https://behance.net/yuricardoso18"
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <meta name="theme-color" content="#e63b3b" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,600;1,800&family=Great+Vibes&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__brand">Yuri<span>.</span></a>
+    <nav class="nav__links">
+      <a href="#about">About</a>
+      <a href="#parcours">Background</a>
+      <a href="#projects">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn--small">Get in touch</a>
+    <a href="../" class="lang-switch" hreflang="fr" title="Version française">FR</a>
+    <button class="theme-toggle" id="themeToggle" type="button"
+            aria-label="Toggle light and dark theme" title="Light / dark theme">
+      <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.5"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+      </svg>
+    </button>
+    <button class="nav__burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__inner">
+      <p class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        Open to a work-study placement · from September 2026
+      </p>
+      <p class="hero__kicker">Portfolio · 2026</p>
+      <h1 class="hero__title">
+        <span class="hero__name">YURI</span>
+        <span class="hero__script">Portfolio</span>
+        <span class="hero__name hero__name--2">BAUSCH</span>
+      </h1>
+      <p class="hero__role">
+        <strong>Community Manager</strong> and <em>Brand Content Creator</em>
+      </p>
+      <div class="hero__cta">
+        <a href="#projects" class="btn">View my work</a>
+        <a href="#contact" class="btn btn--ghost">Let's work together</a>
+        <a href="../assets/CV-Yuri-Bausch.pdf" download class="btn btn--ghost btn--cv">
+          <span class="btn--cv-icon">↓</span> My CV (PDF)
+        </a>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Scroll">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="section__head reveal">
+      <span class="section__num">01</span>
+      <h2 class="section__title">About <span class="script">me</span></h2>
+    </div>
+    <div class="about__grid">
+      <figure class="about__media reveal">
+        <img src="../assets/photo.webp" alt="Portrait of Yuri Bausch"
+             onerror="this.onerror=null;this.src='../assets/photo-placeholder.svg';" />
+        <figcaption>Yuri Bausch<span class="script">.</span></figcaption>
+      </figure>
+      <div class="about__text reveal">
+        <p class="about__lead">
+          I'm 22 and passionate about <strong>fashion</strong>,
+          <strong>cinema</strong> and <strong>pop culture</strong>.
+        </p>
+        <p>
+          Fresh from a Bachelor's degree in communication strategy, I'm a
+          <strong>Community Manager</strong> and <strong>Brand Content Creator</strong>.
+          I help brands and companies craft engaging content, tailored to social media,
+          blending creativity with strategic thinking.
+        </p>
+        <p>
+          I'm fluent in management and digital creation tools, and I know how to build
+          impactful communication campaigns.
+        </p>
+      </div>
+    </div>
+    <aside class="about__skills reveal">
+      <h3>What I do</h3>
+      <ul>
+        <li>Communication strategy</li>
+        <li>Community management</li>
+        <li>Branding &amp; visual identity</li>
+        <li>Brand content &amp; art direction</li>
+        <li>Social media content creation</li>
+        <li>Audiovisual content production</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!-- ===== BACKGROUND / CV ===== -->
+  <section class="resume section" id="parcours">
+    <div class="section__head section__head--row reveal">
+      <div>
+        <span class="section__num">02</span>
+        <h2 class="section__title">My <span class="script">background</span></h2>
+      </div>
+      <a href="../assets/CV-Yuri-Bausch.pdf" download class="btn btn--cv">
+        <span class="btn--cv-icon">↓</span> Download my CV
+      </a>
+    </div>
+
+    <div class="resume__objective reveal">
+      <span class="resume__objective-dot"></span>
+      <p>
+        <strong>Goal: a work-study placement from September 2026</strong> in
+        <strong>Community Management</strong> / <strong>Brand Content</strong>,
+        as part of my Master's in Video &amp; Digital Contents (ESD Paris).
+        Available in the Paris area.
+      </p>
+    </div>
+
+    <div class="resume__grid">
+      <!-- Experience -->
+      <div class="timeline reveal">
+        <h3 class="timeline__head">Professional experience</h3>
+
+        <div class="tl-item">
+          <span class="tl-date">Apr 2025 — Jul 2025</span>
+          <h4 class="tl-role">Digital production <span>· PhotoCineRent — Paris</span></h4>
+          <ul>
+            <li>Prepared shooting equipment (cameras, lenses, accessories)</li>
+            <li>Assisted production during studio and live shoots</li>
+            <li>Managed stock and maintenance of audiovisual gear</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Sep 2023 — Nov 2023</span>
+          <h4 class="tl-role">Community Manager <span>· Government of New Caledonia — Nouméa</span></h4>
+          <ul>
+            <li>Designed and wrote content for institutional social media (Facebook, Instagram)</li>
+            <li>Created visuals aligned with brand guidelines</li>
+            <li>Analysed performance and proposed distribution optimisations</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Dec 2022 — Jan 2023</span>
+          <h4 class="tl-role">Content creation &amp; CM <span>· France Télévisions — Nouméa</span></h4>
+          <ul>
+            <li>Produced digital content tailored to web and social formats</li>
+            <li>Took part in community moderation and management</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="timeline reveal">
+        <h3 class="timeline__head">Education</h3>
+
+        <div class="tl-item tl-item--current">
+          <span class="tl-date">2026 — 2027</span>
+          <h4 class="tl-role">Master's in Video &amp; Digital Contents <span>· ESD — Paris</span></h4>
+          <p class="tl-note">Seeking a work-study placement for this programme.</p>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">2024 — 2025</span>
+          <h4 class="tl-role">Bachelor's MMI <span>· IUT d'Angoulême</span></h4>
+          <p class="tl-note">Major in Communication Strategy.</p>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">2022 — 2023</span>
+          <h4 class="tl-role">DUT MMI <span>· IUT of New Caledonia — Nouméa</span></h4>
+        </div>
+
+        <h3 class="timeline__head timeline__head--lang">Languages</h3>
+        <div class="resume__langs">
+          <span class="lang-pill">French <em>· native</em></span>
+          <span class="lang-pill">English</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills & tools -->
+    <div class="resume__skills reveal">
+      <div class="skillset">
+        <h4>Digital communication</h4>
+        <ul>
+          <li>Community management</li>
+          <li>Brand content</li>
+          <li>Social media strategy</li>
+          <li>Performance analysis (Meta Business Suite, Analytics)</li>
+        </ul>
+      </div>
+      <div class="skillset">
+        <h4>Digital creation</h4>
+        <ul>
+          <li>Visual design (Photoshop, Illustrator)</li>
+          <li>Motion design</li>
+          <li>Video editing (Premiere Pro, After Effects)</li>
+        </ul>
+      </div>
+      <div class="skillset">
+        <h4>Audiovisual</h4>
+        <ul>
+          <li>Filming</li>
+          <li>Audio recording</li>
+          <li>Equipment handling</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="projects section" id="projects">
+    <div class="section__head reveal">
+      <span class="section__num">03</span>
+      <h2 class="section__title">My <span class="script">work</span></h2>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <article class="project reveal" id="project-1">
+      <div class="project__meta">
+        <span class="project__index">01</span>
+        <div class="project__tags">
+          <span>Community Management</span>
+          <span>Social media</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Government of <span class="script">New Caledonia</span></h3>
+        <p class="project__desc">
+          As Community Manager for the Government of New Caledonia, my goals were to inform
+          about institutional news, build closeness with the public, and promote the
+          organisation's events.
+        </p>
+        <p class="project__desc">
+          Audiences were varied: young people, with communication tailored to how they
+          consume content (Instagram, TikTok), but also companies and professionals, with a
+          more corporate, institutional tone (Facebook, LinkedIn). Content was adapted to
+          each platform.
+        </p>
+        <ul class="project__results">
+          <li>Improved engagement</li>
+          <li>Optimised reach</li>
+          <li>High-performing formats</li>
+        </ul>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 2 -->
+    <article class="project reveal" id="project-2">
+      <div class="project__meta">
+        <span class="project__index">02</span>
+        <div class="project__tags">
+          <span>Branding</span>
+          <span>Brand Content</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Le <span class="script">Lieu Utile</span></h3>
+        <p class="project__desc">
+          I supported Le Lieu Utile on its <strong>branding</strong> and
+          <strong>brand content</strong>. The goal: create a strong, memorable identity to
+          make the venue known and make people want to visit.
+        </p>
+        <p class="project__desc">
+          I created the visual identity, shaped the content for its social channels and set
+          up growth tracking. For their feed, I defined post templates ensuring graphic
+          consistency while delimiting each of the venue's worlds — for clear, effective
+          visual recognition.
+        </p>
+        <div class="chips">
+          <span class="chip chip--blue">Coworking</span>
+          <span class="chip chip--orange">Bar &amp; Restaurant</span>
+          <span class="chip chip--purple">Event</span>
+          <span class="chip chip--pink">Shop &amp; Merch</span>
+        </div>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 3 -->
+    <article class="project reveal" id="project-3">
+      <div class="project__meta">
+        <span class="project__index">03</span>
+        <div class="project__tags">
+          <span>Personal project</span>
+          <span>Fashion branding</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title"><span class="script">anatomy.</span></h3>
+        <p class="project__desc">
+          A personal, fictional project for a clothing brand that's especially close to my
+          heart. Passionate about fashion and independent creation, I drew inspiration from
+          French indie designers to bring <strong>"anatomy."</strong> to life.
+        </p>
+        <p class="project__desc">
+          I created a full branding, an iconography and an entire graphic universe with its
+          variations. The theme of the human body and nature allows for striking visuals with
+          many alternatives, later applied to garments as mockups. This project let me fully
+          express my creativity.
+        </p>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 4 -->
+    <article class="project reveal" id="project-4">
+      <div class="project__meta">
+        <span class="project__index">04</span>
+        <div class="project__tags">
+          <span>Audiovisual production</span>
+          <span>Technical</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Saint Laurent <span class="script">— Fashion Week</span></h3>
+        <p class="project__desc">
+          This project shows my grasp of the content production chain (shooting, technical,
+          organisation). During my time at a live production company, I worked on major
+          projects during <strong>Paris Fashion Week</strong>, notably the production file for
+          the Spring/Summer <strong>Saint Laurent HOMME</strong> show.
+        </p>
+        <p class="project__desc">
+          My role: video technician. The goal was to ensure a high-end multi-camera capture
+          for international broadcast, respecting the show's artistic direction. With my team I
+          organised the control room setup, the cabling deployment (fibre, RF) and the stage
+          preparation.
+        </p>
+        <ul class="project__results">
+          <li>Audiovisual production</li>
+          <li>Teamwork under pressure</li>
+          <li>Technical &amp; logistical rigour</li>
+          <li>Sensitivity to brand image</li>
+        </ul>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 5 — Independent audiovisual -->
+    <article class="project reveal" id="project-5">
+      <div class="project__meta">
+        <span class="project__index">05</span>
+        <div class="project__tags">
+          <span>Audiovisual</span>
+          <span>Film sets</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Shoots &amp; <span class="script">independent projects</span></h3>
+        <p class="project__desc">
+          Alongside communication, I work on independent shoots — features, shorts and series
+          — taking on various technical and production roles. Hands-on experience of a film's
+          production chain, from set to post-production.
+        </p>
+
+        <div class="credits">
+          <article class="credit-card">
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎙️</span> Sound engineer</span>
+            <h4 class="credit-card__title">After the Afterparty</h4>
+            <p class="credit-card__dir">by Nicolas Parent</p>
+            <p class="credit-card__meta">Independent feature · 2023</p>
+            <p class="credit-card__desc">
+              Independent dramatic comedy shot in New Caledonia (theatrical release in France
+              in 2025). In charge of sound recording on set.
+            </p>
+            <a href="https://www.imdb.com/title/tt37673116/" target="_blank" rel="noopener" class="credit-card__link">IMDb page ↗</a>
+          </article>
+
+          <article class="credit-card credit-card--media">
+            <figure class="credit-card__media">
+              <img src="../assets/films/ma-bottee.webp" alt="Poster of the short film Ma Bottée by Benoît Deldique" loading="lazy" />
+            </figure>
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎥</span> Camera assistant</span>
+            <h4 class="credit-card__title">Ma Bottée</h4>
+            <p class="credit-card__dir">by Benoît Deldique</p>
+            <p class="credit-card__meta">Short film · Nikon Film Festival 2025</p>
+            <p class="credit-card__desc">
+              "Léa and Léo bump into each other in a nightclub. One glance is enough — love at
+              first sight. But when Léa reveals herself, the night takes an unexpected turn."
+              Camera assistance on set.
+            </p>
+            <a href="https://festivalnikon.fr/video/2025/904" target="_blank" rel="noopener" class="credit-card__link">Watch the film ↗</a>
+          </article>
+
+          <article class="credit-card">
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎞️</span> Production assistant</span>
+            <h4 class="credit-card__title">Anima</h4>
+            <p class="credit-card__dir">by Meryem Mrichcha</p>
+            <p class="credit-card__meta">Fantasy/thriller series pilot · EICAR · 2026</p>
+            <p class="credit-card__desc">
+              Series pilot (originally "Reflets"): Joe, a washed-up journalist in a mountain
+              town, ventures into the forest to find his missing intern and discovers that an
+              old local legend is real. Production assistance: organisation and shoot logistics.
+            </p>
+          </article>
+
+          <article class="credit-card">
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎬</span> Assistant director</span>
+            <h4 class="credit-card__title">Dog Days are Over</h4>
+            <p class="credit-card__dir">by Meryem Mrichcha</p>
+            <p class="credit-card__meta">Short film · EICAR · 2026</p>
+            <p class="credit-card__desc">
+              Drama: after his release from prison, Marc tries to rebuild a normal life and
+              reconnect socially. Assistant director: preparation and on-set coordination.
+            </p>
+          </article>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact section" id="contact">
+    <div class="contact__inner reveal">
+      <span class="section__num">04</span>
+      <h2 class="contact__title">Let's bring your <span class="script">ideas to life</span></h2>
+      <p class="contact__text">
+        <strong>Open to a work-study placement from September 2026</strong> in communication
+        &amp; brand content. A project, a brand to grow, or a work-study opportunity?
+        Let's talk.
+      </p>
+
+      <div class="contact__grid">
+        <!-- Form -->
+        <form class="contact__form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="8f1cd891-c46f-49eb-a60a-075e3918fb40" />
+          <input type="hidden" name="subject" value="New message from the portfolio (EN)" />
+          <input type="hidden" name="from_name" value="Yuri Bausch Portfolio" />
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field field--full">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+          </div>
+          <button type="submit" class="btn contact__submit">Send message</button>
+          <p class="contact__status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- Details -->
+        <div class="contact__links">
+          <a href="mailto:yuri.bausch@gmail.com" class="contact__card">
+            <span class="contact__label">Email</span>
+            <span class="contact__value">yuri.bausch@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener" class="contact__card">
+            <span class="contact__label">LinkedIn</span>
+            <span class="contact__value">in/yuri-bausch-cardoso</span>
+          </a>
+          <a href="tel:+33634360310" class="contact__card">
+            <span class="contact__label">Phone</span>
+            <span class="contact__value">+33 6 34 36 03 10</span>
+          </a>
+          <a href="https://behance.net/yuricardoso18" target="_blank" rel="noopener" class="contact__card">
+            <span class="contact__label">Behance</span>
+            <span class="contact__value">behance.net/yuricardoso18</span>
+          </a>
+          <div class="contact__card contact__card--static">
+            <span class="contact__label">Location</span>
+            <span class="contact__value">Paris area · Île-de-France</span>
+          </div>
+          <a href="../assets/CV-Yuri-Bausch.pdf" download class="contact__card">
+            <span class="contact__label">CV</span>
+            <span class="contact__value">Download my CV (PDF) ↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Yuri Bausch<span class="script footer__script">Cardoso</span></span>
+    <nav class="footer__social">
+      <a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://behance.net/yuricardoso18" target="_blank" rel="noopener">Behance</a>
+      <a href="mailto:yuri.bausch@gmail.com">Email</a>
+    </nav>
+    <span>© 2026 — All rights reserved</span>
+  </footer>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+    <img src="" alt="" id="lbImg" />
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
+  </div>
+
+  <script>window.ASSET_BASE = "../";</script>
+  <script src="../script.js"></script>
+
+  <!-- Visit stats (GoatCounter, cookieless) — replace VOTRECODE with your code (see README) -->
+  <script>
+    (function () {
+      var CODE = "VOTRECODE";
+      if (CODE && CODE !== "VOTRECODE") {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "//gc.zgo.at/count.js";
+        s.setAttribute("data-goatcounter", "https://" + CODE + ".goatcounter.com/count");
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
+</body>
+</html>

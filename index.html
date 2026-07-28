@@ -17,6 +17,9 @@
   <meta name="author" content="Yuri Bausch" />
   <meta name="keywords" content="Yuri Bausch, Community Manager, Brand Content Creator, alternance, communication, social media, branding, Paris" />
   <link rel="canonical" href="https://yuribausch.github.io/portfolio/" />
+  <link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/" />
+  <link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/" />
 
   <!-- Open Graph (LinkedIn, Facebook, WhatsApp) -->
   <meta property="og:type" content="profile" />
@@ -86,6 +89,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <a href="#contact" class="btn btn--small">Me contacter</a>
+    <a href="en/" class="lang-switch" hreflang="en" title="English version">EN</a>
     <button class="theme-toggle" id="themeToggle" type="button"
             aria-label="Basculer entre thème clair et sombre" title="Thème clair / sombre">
       <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -581,5 +585,19 @@
   </div>
 
   <script src="script.js"></script>
+
+  <!-- Statistiques de visite (GoatCounter, sans cookie) — remplace VOTRECODE par ton code (voir README) -->
+  <script>
+    (function () {
+      var CODE = "VOTRECODE"; // ← ton identifiant GoatCounter
+      if (CODE && CODE !== "VOTRECODE") {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "//gc.zgo.at/count.js";
+        s.setAttribute("data-goatcounter", "https://" + CODE + ".goatcounter.com/count");
+        document.body.appendChild(s);
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -64,15 +64,39 @@ Le site se reconstruit tout seul en ~1 minute.
 
 ---
 
+## 📊 5. Activer les statistiques de visite (GoatCounter — gratuit, sans cookie)
+Pour savoir combien de recruteurs visitent ton site :
+1. Va sur **https://www.goatcounter.com** → crée un compte gratuit et choisis un code (ex. `yuribausch`).
+2. Ton adresse de stats sera `https://TONCODE.goatcounter.com`.
+3. Dans **`index.html`** ET **`en/index.html`**, cherche `VOTRECODE` et remplace-le par ton code.
+4. `git add -A && git commit -m "stats" && git push`. C'est actif ✅
+
+Tant que `VOTRECODE` n'est pas remplacé, aucun script de stats n'est chargé (site 100 % propre).
+
+---
+
+## 🌍 Version bilingue
+- **Français** : `index.html` → https://yuribausch.github.io/portfolio/
+- **Anglais** : `en/index.html` → https://yuribausch.github.io/portfolio/en/
+- Le bouton **FR / EN** en haut à droite bascule entre les deux.
+- ⚠️ Si tu modifies un texte, pense à le changer **dans les deux fichiers**.
+
+---
+
 ## 📁 Structure
 ```
-index.html          → contenu et structure
-styles.css          → design (couleurs, typo, mise en page)
-script.js           → galeries, lightbox, menu mobile, formulaire
+index.html          → page FR (contenu + structure)
+en/index.html       → page EN (traduction)
+styles.css          → design (couleurs, typo, thème clair/sombre)
+script.js           → galeries, lightbox, menu, formulaire, thème, stats
 favicon.ico         → icône de l'onglet
+404.html            → page d'erreur personnalisée
+robots.txt, sitemap.xml → référencement
 assets/
-  photo.jpg         → ta photo de profil
+  photo.webp        → ta photo de profil
   CV-Yuri-Bausch.pdf→ ton CV (téléchargeable depuis le site)
-  favicon.svg, apple-touch-icon.png, favicon-16/32.png → icônes
-  gallery/          → images des projets (qualité max du PDF)
+  og-image.png      → aperçu lors du partage du lien
+  favicon.svg, apple-touch-icon.png … → icônes
+  gallery/          → images des projets (WebP, optimisées)
+  films/            → visuels des projets audiovisuels
 ```
