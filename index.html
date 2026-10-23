@@ -93,93 +93,520 @@
     <div class="nav__actions">
       <a href="#contact" class="btn btn--small nav__cta">Me contacter</a>
       <a href="en/" class="icon-btn lang-switch" hreflang="en" title="English version" aria-label="English version">EN</a>
-      <button class="icon-btn theme-toggle" id="themeToggle" type="button" aria-label="Basculer entre thème clair et sombre" title="Thème clair / sombre">
-        <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l-1.4-1.4M17.7 6.3l-1.4 1.4"/></svg>
+      <button class="icon-btn theme-toggle" id="themeToggle" type="button"
+              aria-label="Basculer entre thème clair et sombre" title="Thème clair / sombre">
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5"/>
+          <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
       </button>
-      <button class="nav__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
     <div class="hero__inner">
-      <p class="hero__badge"><span class="hero__badge-dot"></span>En recherche d'alternance · dès septembre 2026</p>
+      <p class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        En recherche d'alternance · dès septembre 2026
+      </p>
       <p class="hero__kicker">Portfolio · 2026</p>
-      <h1 class="hero__title"><span class="hero__name">YURI</span><span class="hero__script">Portfolio</span><span class="hero__name hero__name--2">BAUSCH</span></h1>
-      <p class="hero__role"><strong>Community Manager</strong> et <em>Brand Content Creator</em></p>
+      <h1 class="hero__title">
+        <span class="hero__name">YURI</span>
+        <span class="hero__script">Portfolio</span>
+        <span class="hero__name hero__name--2">BAUSCH</span>
+      </h1>
+      <p class="hero__role">
+        <strong>Community Manager</strong> et <em>Brand Content Creator</em>
+      </p>
       <div class="hero__cta">
         <a href="#projects" class="btn">Voir mes projets</a>
         <a href="#contact" class="btn btn--ghost">Travaillons ensemble</a>
-        <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--ghost btn--cv"><span class="btn--cv-icon">↓</span> Mon CV (PDF)</a>
+        <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--ghost btn--cv">
+          <span class="btn--cv-icon">↓</span> Mon CV (PDF)
+        </a>
         <a href="https://yuribausch.github.io/color-grade-tool/" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">🎨 Color Grade Tool</a>
       </div>
     </div>
-    <a href="#about" class="hero__scroll" aria-label="Défiler"><span></span></a>
+    <a href="#about" class="hero__scroll" aria-label="Défiler">
+      <span></span>
+    </a>
   </section>
 
   <!-- ===== ABOUT ===== -->
   <section class="about section" id="about">
-    <div class="section__head reveal"><span class="section__num">01</span><h2 class="section__title">À propos <span class="script">de moi</span></h2></div>
+    <div class="section__head reveal">
+      <span class="section__num">01</span>
+      <h2 class="section__title">À <span class="script">propos</span></h2>
+    </div>
     <div class="about__grid">
-      <figure class="about__media reveal"><img src="assets/photo.webp" alt="Portrait de Yuri Bausch" decoding="async" onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';" /><figcaption>Yuri Bausch<span class="script">.</span></figcaption></figure>
+      <figure class="about__media reveal">
+        <img src="assets/photo.webp" alt="Portrait de Yuri Bausch"
+             decoding="async"
+             onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';" />
+        <figcaption>Yuri Bausch<span class="script">.</span></figcaption>
+      </figure>
       <div class="about__text reveal">
-        <p class="about__lead">J'ai 22 ans et je suis passionné par la <strong>mode</strong>, le <strong>cinéma</strong> et la <strong>pop culture</strong>.</p>
-        <p>Actuellement étudiant en <strong>Bachelor Communication &amp; Stratégie à l'ESD</strong>, je suis à la recherche d'une alternance dès septembre 2026 pour poursuivre mon parcours en Mastère Vidéo &amp; Digital Contents. Je souhaite contribuer à des projets de communication, de brand content et de création audiovisuelle.</p>
-        <p>Mon parcours mêle communication, création de contenu et production audiovisuelle, avec une attention particulière portée à l'image et au travail d'équipe.</p>
+        <p class="about__lead">
+          J'ai 22 ans et je suis passionné de <strong>mode</strong>, de
+          <strong>cinéma</strong> et de <strong>culture populaire</strong>.
+        </p>
+        <p>
+          Fraîchement diplômé d'un Bachelor en stratégie de communication, je suis
+          <strong>Community Manager</strong> et <strong>Brand Content Creator</strong>.
+          J'aide les marques et les entreprises à concevoir des contenus engageants,
+          adaptés aux réseaux sociaux, en alliant créativité et réflexion stratégique.
+        </p>
+        <p>
+          Je maîtrise les outils de management et de création digitale, et je sais
+          construire des campagnes de communication impactantes.
+        </p>
       </div>
     </div>
-    <aside class="about__skills reveal"><h3>Ce que je fais</h3><ul><li>Stratégie de communication</li><li>Community Management</li><li>Branding &amp; identité visuelle</li><li>Brand Content &amp; direction artistique</li><li>Création de contenu réseaux sociaux</li><li>Production de contenu audiovisuel</li></ul></aside>
+    <aside class="about__skills reveal">
+      <h3>Ce que je fais</h3>
+      <ul>
+        <li>Stratégie de communication</li>
+        <li>Community Management</li>
+        <li>Branding &amp; identité visuelle</li>
+        <li>Brand Content &amp; direction artistique</li>
+        <li>Création de contenu réseaux sociaux</li>
+        <li>Production de contenu audiovisuel</li>
+      </ul>
+    </aside>
   </section>
 
   <!-- ===== PARCOURS / CV ===== -->
   <section class="resume section" id="parcours">
-    <div class="section__head section__head--row reveal"><div><span class="section__num">02</span><h2 class="section__title">Mon <span class="script">parcours</span></h2></div><a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--cv"><span class="btn--cv-icon">↓</span> Télécharger mon CV</a></div>
-    <div class="resume__objective reveal"><span class="resume__objective-dot"></span><p><strong>Objectif&nbsp;: une alternance dès septembre 2026</strong> en <strong>Community Management</strong> / <strong>Brand Content</strong>, dans le cadre de mon Mastère Vidéo &amp; Digital Contents (ESD Paris). Disponible en région parisienne.</p></div>
+    <div class="section__head section__head--row reveal">
+      <div>
+        <span class="section__num">02</span>
+        <h2 class="section__title">Mon <span class="script">parcours</span></h2>
+      </div>
+      <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--cv">
+        <span class="btn--cv-icon">↓</span> Télécharger mon CV
+      </a>
+    </div>
+
+    <div class="resume__objective reveal">
+      <span class="resume__objective-dot"></span>
+      <p>
+        <strong>Objectif&nbsp;: une alternance dès septembre 2026</strong> en
+        <strong>Community Management</strong> / <strong>Brand Content</strong>,
+        dans le cadre de mon Mastère Vidéo &amp; Digital Contents (ESD Paris).
+        Disponible en région parisienne.
+      </p>
+    </div>
+
     <div class="resume__grid">
+      <!-- Expérience -->
       <div class="timeline reveal">
         <h3 class="timeline__head">Expérience professionnelle</h3>
-        <div class="tl-item"><span class="tl-date">Avr. 2025 — Juil. 2025</span><h4 class="tl-role">Production digitale <span>· PhotoCineRent — Paris</span></h4><ul><li>Préparation du matériel de tournage (caméras, optiques, accessoires)</li><li>Assistance à la production lors de tournages en studio et en live</li><li>Gestion du stock et entretien du matériel audiovisuel</li></ul></div>
-        <div class="tl-item"><span class="tl-date">Sept. 2023 — Nov. 2023</span><h4 class="tl-role">Community Manager <span>· Gouvernement de la Nouvelle-Calédonie — Nouméa</span></h4><ul><li>Conception et rédaction de contenus pour les réseaux sociaux institutionnels (Facebook, Instagram)</li><li>Création de visuels adaptés aux chartes graphiques</li><li>Analyse des performances et optimisations de diffusion</li></ul></div>
-        <div class="tl-item"><span class="tl-date">Déc. 2022 — Janv. 2023</span><h4 class="tl-role">Création de contenu &amp; CM <span>· France Télévisions — Nouméa</span></h4><ul><li>Production de contenus digitaux adaptés aux formats web et réseaux sociaux</li><li>Participation à la modération et à la gestion des communautés</li></ul></div>
+
+        <div class="tl-item">
+          <span class="tl-date">Avr. 2025 — Juil. 2025</span>
+          <h4 class="tl-role">Production digitale <span>· PhotoCineRent — Paris</span></h4>
+          <ul>
+            <li>Préparation du matériel de tournage (caméras, optiques, accessoires)</li>
+            <li>Assistance à la production lors de tournages en studio et en live</li>
+            <li>Gestion du stock et entretien du matériel audiovisuel</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Sept. 2023 — Nov. 2023</span>
+          <h4 class="tl-role">Community Manager <span>· Gouvernement de la Nouvelle-Calédonie — Nouméa</span></h4>
+          <ul>
+            <li>Conception et rédaction de contenus pour les réseaux sociaux institutionnels (Facebook, Instagram)</li>
+            <li>Création de visuels adaptés aux chartes graphiques</li>
+            <li>Analyse des performances et optimisations de diffusion</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">Déc. 2022 — Janv. 2023</span>
+          <h4 class="tl-role">Création de contenu &amp; CM <span>· France Télévisions — Nouméa</span></h4>
+          <ul>
+            <li>Production de contenus digitaux adaptés aux formats web et réseaux sociaux</li>
+            <li>Participation à la modération et à la gestion des communautés</li>
+          </ul>
+        </div>
       </div>
+
+      <!-- Formation -->
       <div class="timeline reveal">
         <h3 class="timeline__head">Formation</h3>
-        <div class="tl-item"><span class="tl-date">2025 — 2027</span><h4 class="tl-role">Mastère Vidéo &amp; Digital Contents <span>· ESD — Paris</span></h4><p class="tl-note">Rentrée prévue en septembre 2025.</p></div>
-        <div class="tl-item"><span class="tl-date">2024 — 2025</span><h4 class="tl-role">Bachelor MMI <span>· IUT d'Angoulême</span></h4><p class="tl-note">Parcours Stratégie de communication.</p></div>
-        <div class="tl-item"><span class="tl-date">2022 — 2023</span><h4 class="tl-role">DUT MMI <span>· IUT de Nouvelle-Calédonie — Nouméa</span></h4></div>
-        <h3 class="timeline__head timeline__head--lang">Langues</h3><div class="resume__langs"><span class="lang-pill">Français <em>· langue maternelle</em></span><span class="lang-pill">Anglais</span></div>
+
+        <div class="tl-item tl-item--current">
+          <span class="tl-date">2026 — 2027</span>
+          <h4 class="tl-role">Mastère Vidéo &amp; Digital Contents <span>· ESD — Paris</span></h4>
+          <p class="tl-note">En recherche d'alternance pour ce cursus.</p>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">2024 — 2025</span>
+          <h4 class="tl-role">Bachelor MMI <span>· IUT d'Angoulême</span></h4>
+          <p class="tl-note">Parcours Stratégie de communication.</p>
+        </div>
+
+        <div class="tl-item">
+          <span class="tl-date">2022 — 2023</span>
+          <h4 class="tl-role">DUT MMI <span>· IUT de Nouvelle-Calédonie — Nouméa</span></h4>
+        </div>
+
+        <h3 class="timeline__head timeline__head--lang">Langues</h3>
+        <div class="resume__langs">
+          <span class="lang-pill">Français <em>· langue maternelle</em></span>
+          <span class="lang-pill">Anglais</span>
+        </div>
       </div>
     </div>
+
+    <!-- Compétences & outils -->
     <div class="resume__skills reveal">
-      <div class="skillset"><h4>Communication</h4><ul><li>Stratégie de communication</li><li>Community Management</li><li>Gestion de projet</li></ul></div>
-      <div class="skillset"><h4>Brand Content</h4><ul><li>Direction artistique</li><li>Storytelling</li><li>Création de contenu</li></ul></div>
-      <div class="skillset"><h4>Outils</h4><ul><li>Suite Adobe</li><li>Réseaux sociaux</li><li>Production audiovisuelle</li></ul></div>
+      <div class="skillset">
+        <h4>Communication digitale</h4>
+        <ul>
+          <li>Community management</li>
+          <li>Brand content</li>
+          <li>Stratégie social media</li>
+          <li>Analyse des performances (Meta Business Suite, Analytics)</li>
+        </ul>
+      </div>
+      <div class="skillset">
+        <h4>Création digitale</h4>
+        <ul>
+          <li>Création visuelle (Photoshop, Illustrator)</li>
+          <li>Motion design</li>
+          <li>Montage vidéo (Premiere Pro, After Effects)</li>
+        </ul>
+      </div>
+      <div class="skillset">
+        <h4>Audiovisuel</h4>
+        <ul>
+          <li>Prise de vue</li>
+          <li>Prise de son</li>
+          <li>Gestion du matériel</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <!-- ===== PROJECTS ===== -->
   <section class="projects section" id="projects">
-    <div class="section__head reveal"><span class="section__num">03</span><h2 class="section__title">Mes <span class="script">projets</span></h2></div>
-    <article class="project reveal" id="project-1"><div class="project__meta"><span class="project__index">01</span><div class="project__tags"><span>Communication institutionnelle</span><span>Social Media</span></div></div><div class="project__body"><h3 class="project__title">Gouvernement de la <span class="script">Nouvelle-Calédonie</span></h3><p class="project__desc">Lors de mon stage au gouvernement de la Nouvelle-Calédonie, j'ai participé à la conception de la campagne pour l'appel à projet <strong>Tech for Good</strong>, un dispositif visant à soutenir des initiatives technologiques à fort impact social et environnemental.</p><p class="project__desc">J'ai créé des visuels percutants pour promouvoir l'initiative sur les réseaux sociaux, en respectant la charte graphique institutionnelle tout en apportant une touche moderne pour toucher un public plus jeune. J'ai également conçu d'autres posts pour différentes campagnes du gouvernement.</p><ul class="project__results"><li>Création de visuels percutants pour les réseaux sociaux</li><li>Respect et déclinaison de la charte graphique institutionnelle</li><li>Ciblage d'un public jeune et engagé</li><li>Promotion de projets innovants (Greentech, inclusion, etc.)</li></ul></div><div class="gallery" data-cols="3"></div></article>
-    <article class="project reveal" id="project-2"><div class="project__meta"><span class="project__index">02</span><div class="project__tags"><span>Création de contenu</span><span>Communication</span></div></div><div class="project__body"><h3 class="project__title">France <span class="script">Télévisions</span></h3><p class="project__desc">Production de contenus digitaux adaptés aux formats web et aux réseaux sociaux, ainsi que participation à la modération et à l'animation des communautés.</p></div><div class="gallery" data-cols="3"></div></article>
-    <article class="project reveal" id="project-3"><div class="project__meta"><span class="project__index">03</span><div class="project__tags"><span>Projet personnel</span><span>Branding mode</span></div></div><div class="project__body"><h3 class="project__title"><span class="script">anatomy.</span></h3><p class="project__desc">Projet personnel et fictif pour une marque de vêtements qui me tient particulièrement à cœur. Passionné de mode et de création indépendante, je me suis inspiré de créateurs français indé pour donner vie à <strong>« anatomy. »</strong>.</p><p class="project__desc">J'ai créé un branding complet, une iconographie et tout un univers graphique avec ses déclinaisons. La thématique du corps humain et de la nature permet des visuels marquants et des déclinaisons variées, appliquées ensuite sur des vêtements sous forme de mockups. Ce projet m'a permis d'exprimer pleinement ma créativité.</p></div><div class="gallery" data-cols="3"></div></article>
-    <article class="project reveal" id="project-4"><div class="project__meta"><span class="project__index">04</span><div class="project__tags"><span>Production audiovisuelle</span><span>Technique</span></div></div><div class="project__body"><h3 class="project__title">Saint Laurent <span class="script">— Fashion Week</span></h3><p class="project__desc">Ce dernier projet montre ma compréhension de la chaîne de production de contenu (tournage, technique, organisation). Lors de mon passage dans une boîte de production live, j'ai travaillé sur de gros projets pendant la <strong>Fashion Week de Paris</strong>, notamment le dossier de production du défilé Printemps/Été de <strong>Saint Laurent HOMME</strong>.</p><p class="project__desc">Mon rôle&nbsp;: technicien vidéo. L'objectif était d'assurer une captation multicaméra haut de gamme destinée à la diffusion internationale, dans le respect de la direction artistique du défilé. J'ai organisé avec mon équipe l'installation de la régie, le déploiement du câblage (fibre, HF) et la préparation du plateau.</p><ul class="project__results"><li>Production audiovisuelle</li><li>Travail d'équipe sous contrainte</li><li>Rigueur technique &amp; logistique</li><li>Sensibilité à l'image de marque</li></ul></div><div class="gallery" data-cols="3"></div></article>
-    <article class="project reveal" id="project-5"><div class="project__meta"><span class="project__index">05</span><div class="project__tags"><span>Audiovisuel</span><span>Plateaux de tournage</span></div></div><div class="project__body"><h3 class="project__title">Tournages &amp; <span class="script">projets indépendants</span></h3><p class="project__desc">En parallèle de la communication, je participe à des tournages indépendants — longs métrages, courts métrages et séries — en occupant différents postes techniques et de production. Une expérience concrète de la chaîne de fabrication d'un film, du plateau à la post-production.</p><p class="project__desc">Assistant caméra, assistant de production, assistant réalisateur : des postes variés qui ont forgé ma rigueur technique, ma capacité à travailler dans des contraintes fortes et mon respect du processus artistique.</p><div class="credits-grid"><article class="credit-card"><span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎥</span> Assistant caméra</span><h4 class="credit-card__title">Ma Bottée</h4><p class="credit-card__dir">de Benoît Deldique</p><p class="credit-card__meta">Court métrage · Nikon Film Festival 2025</p><p class="credit-card__desc">Assistanat caméra sur le plateau du court métrage.</p><a href="https://festivalnikon.fr/video/2025/904" target="_blank" rel="noopener noreferrer" class="credit-card__link">Voir le film ↗</a></article><article class="credit-card"><span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎬</span> Assistant de production &amp; 3<sup>e</sup> assistant réal.</span><h4 class="credit-card__title">Pour Sarah</h4><p class="credit-card__dir">de Victor Hérault</p><p class="credit-card__meta">Long métrage indépendant · 2025</p><p class="credit-card__desc">Long métrage autoproduit : un groupe de jeunes part en vacances dans une maison de campagne, avant qu'un événement dramatique ne fasse voler le groupe en éclats. Double casquette : logistique plateau et coordination de la figuration.</p></article></div></div></article>
+    <div class="section__head reveal">
+      <span class="section__num">03</span>
+      <h2 class="section__title">Mes <span class="script">projets</span></h2>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <article class="project reveal" id="project-1">
+      <div class="project__meta">
+        <span class="project__index">01</span>
+        <div class="project__tags">
+          <span>Communication institutionnelle</span>
+          <span>Social Media</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Gouvernement de la <span class="script">Nouvelle-Calédonie</span></h3>
+        <p class="project__desc">
+          Lors de mon stage au gouvernement de la Nouvelle-Calédonie, j'ai participé à la
+          conception de la campagne pour l'appel à projet <strong>Tech for Good</strong>, un
+          dispositif visant à soutenir des initiatives technologiques à fort impact social et
+          environnemental.
+        </p>
+        <p class="project__desc">
+          J'ai créé des visuels percutants pour promouvoir l'initiative sur les réseaux
+          sociaux, en respectant la charte graphique institutionnelle tout en apportant une
+          touche moderne pour toucher un public plus jeune. J'ai également conçu d'autres
+          posts pour différentes campagnes du gouvernement.
+        </p>
+        <ul class="project__results">
+          <li>Création de visuels percutants pour les réseaux sociaux</li>
+          <li>Respect et déclinaison de la charte graphique institutionnelle</li>
+          <li>Ciblage d'un public jeune et engagé</li>
+          <li>Promotion de projets innovants (Greentech, inclusion, etc.)</li>
+        </ul>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 2 -->
+    <article class="project reveal" id="project-2">
+      <div class="project__meta">
+        <span class="project__index">02</span>
+        <div class="project__tags">
+          <span>Branding</span>
+          <span>Brand Content</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Le <span class="script">Lieu Utile</span></h3>
+        <p class="project__desc">
+          J'ai accompagné Le Lieu Utile sur son <strong>branding</strong> et son
+          <strong>brand content</strong>. L'objectif&nbsp;: créer une identité forte et
+          mémorable pour faire connaître le lieu et attirer du public.
+        </p>
+        <p class="project__desc">
+          J'ai conçu l'identité visuelle, conceptualisé des contenus pour les réseaux
+          sociaux et mis en place un suivi de l'évolution de la marque. Pour leur feed,
+          j'ai imaginé des typologies de posts permettant de maintenir une cohérence
+          graphique tout en mettant en valeur les différents espaces du lieu, assurant une
+          reconnaissance immédiate.
+        </p>
+        <div class="chips">
+          <span class="chip chip--blue">Coworking</span>
+          <span class="chip chip--orange">Bar &amp; Restaurant</span>
+          <span class="chip chip--purple">Événements</span>
+          <span class="chip chip--pink">Boutique &amp; Merch</span>
+        </div>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 3 -->
+    <article class="project reveal" id="project-3">
+      <div class="project__meta">
+        <span class="project__index">03</span>
+        <div class="project__tags">
+          <span>Projet personnel</span>
+          <span>Branding mode</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title"><span class="script">anatomy.</span></h3>
+        <p class="project__desc">
+          Projet personnel et fictif pour une marque de vêtements qui me tient
+          particulièrement à cœur. Passionné de mode et de création indépendante, je me
+          suis inspiré de créateurs français indé pour donner vie à
+          <strong>« anatomy. »</strong>.
+        </p>
+        <p class="project__desc">
+          J'ai créé un branding complet, une iconographie et tout un univers graphique avec
+          ses déclinaisons. La thématique du corps humain et de la nature permet des
+          visuels marquants et des déclinaisons variées, appliquées ensuite sur des
+          vêtements sous forme de mockups. Ce projet m'a permis d'exprimer pleinement ma
+          créativité.
+        </p>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 4 -->
+    <article class="project reveal" id="project-4">
+      <div class="project__meta">
+        <span class="project__index">04</span>
+        <div class="project__tags">
+          <span>Production audiovisuelle</span>
+          <span>Technique</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Saint Laurent <span class="script">— Fashion Week</span></h3>
+        <p class="project__desc">
+          Ce dernier projet montre ma compréhension de la chaîne de production de contenu
+          (tournage, technique, organisation). Lors de mon passage dans une boîte de
+          production live, j'ai travaillé sur de gros projets pendant la
+          <strong>Fashion Week de Paris</strong>, notamment le dossier de production du
+          défilé Printemps/Été de <strong>Saint Laurent HOMME</strong>.
+        </p>
+        <p class="project__desc">
+          Mon rôle&nbsp;: technicien vidéo. L'objectif était d'assurer une captation
+          multicaméra haut de gamme destinée à la diffusion internationale, dans le respect
+          de la direction artistique du défilé. J'ai organisé avec mon équipe l'installation
+          de la régie, le déploiement du câblage (fibre, HF) et la préparation du plateau.
+        </p>
+        <ul class="project__results">
+          <li>Production audiovisuelle</li>
+          <li>Travail d'équipe sous contrainte</li>
+          <li>Rigueur technique &amp; logistique</li>
+          <li>Sensibilité à l'image de marque</li>
+        </ul>
+      </div>
+      <div class="gallery" data-cols="3"></div>
+    </article>
+
+    <!-- PROJECT 5 — Audiovisuel indé -->
+    <article class="project reveal" id="project-5">
+      <div class="project__meta">
+        <span class="project__index">05</span>
+        <div class="project__tags">
+          <span>Audiovisuel</span>
+          <span>Plateaux de tournage</span>
+        </div>
+      </div>
+      <div class="project__body">
+        <h3 class="project__title">Tournages &amp; <span class="script">projets indépendants</span></h3>
+        <p class="project__desc">
+          En parallèle de la communication, je travaille sur des tournages indépendants —
+          longs métrages, courts métrages et séries — où j'occupe différents postes
+          techniques et de production. Une expérience concrète de la chaîne de fabrication
+          d'un film, du plateau à la post-production.
+        </p>
+        <p class="project__desc">
+          Assistant caméra, assistant de production, assistant réalisateur&nbsp;: des rôles
+          variés qui ont forgé ma rigueur technique, ma réactivité sous contrainte et mon
+          sens du respect d'une vision artistique.
+        </p>
+
+        <!-- Grille de fiches crédits -->
+        <div class="credits-grid">
+          <article class="credit-card credit-card--media">
+            <figure class="credit-card__media">
+              <img src="assets/films/ma-bottee.webp" alt="Affiche du court métrage Ma Bottée de Benoît Deldique" width="800" height="1143" loading="lazy" decoding="async" />
+            </figure>
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎥</span> Assistant caméra</span>
+            <h4 class="credit-card__title">Ma Bottée</h4>
+            <p class="credit-card__dir">de Benoît Deldique</p>
+            <p class="credit-card__meta">Court métrage · Nikon Film Festival 2025</p>
+            <p class="credit-card__desc">
+              « Léa et Léo se bousculent en boîte de nuit. Le premier regard suffit : c'est le
+              coup de foudre. Mais lorsque Léa se dévoile, la nuit bascule dans l'inattendu. »
+              Assistanat caméra sur le tournage.
+            </p>
+            <a href="https://festivalnikon.fr/video/2025/904" target="_blank" rel="noopener noreferrer" class="credit-card__link">Voir le film ↗</a>
+          </article>
+
+          <article class="credit-card">
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎬</span> Assistant de production &amp; 3<sup>e</sup> assistant réal.</span>
+            <h4 class="credit-card__title">Pour Sarah</h4>
+            <p class="credit-card__dir">de Victor Hérault</p>
+            <p class="credit-card__meta">Long métrage indépendant · 2025</p>
+            <p class="credit-card__desc">
+              Long métrage autoproduit : un groupe de jeunes part en vacances dans une maison
+              de campagne, avant qu'un événement dramatique ne fasse voler le groupe en
+              éclats. Double casquette : logistique plateau et coordination de la figuration.
+            </p>
+          </article>
+
+          <article class="credit-card">
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎞️</span> Assistant de production</span>
+            <h4 class="credit-card__title">Anima</h4>
+            <p class="credit-card__dir">de Meryem Mrichcha</p>
+            <p class="credit-card__meta">Pilote de série fantastique/thriller · EICAR · 2026</p>
+            <p class="credit-card__desc">
+              Pilote de série (initialement « Reflets ») : Joe, journaliste sur le déclin dans
+              une ville de montagne, s'enfonce dans la forêt pour retrouver son stagiaire
+              disparu et découvre qu'une vieille légende locale est bien réelle. Assistanat de
+              production : organisation et logistique du tournage.
+            </p>
+          </article>
+
+          <article class="credit-card">
+            <span class="credit-card__role"><span class="credit-card__ico" aria-hidden="true">🎬</span> Assistant réalisateur</span>
+            <h4 class="credit-card__title">Dog Days are Over</h4>
+            <p class="credit-card__dir">de Meryem Mrichcha</p>
+            <p class="credit-card__meta">Court métrage · EICAR · 2026</p>
+            <p class="credit-card__desc">
+              Drame : à sa sortie de prison, Marc tente de reconstruire une vie normale et de
+              renouer un lien social. Assistanat à la réalisation : préparation et coordination
+              du plateau.
+            </p>
+          </article>
+        </div>
+      </div>
+    </article>
   </section>
 
   <!-- ===== CONTACT ===== -->
-  <section class="contact section" id="contact"><div class="contact__inner reveal"><span class="section__num">04</span><h2 class="contact__title">Donnons vie à vos <span class="script">idées</span></h2><p class="contact__text"><strong>Je suis à la recherche d'une alternance.</strong> Je suis actuellement étudiant en Bachelor Communication &amp; Stratégie à l'ESD et souhaite poursuivre mon parcours en Mastère Vidéo &amp; Digital Contents. Contactez-moi pour échanger sur une opportunité.</p><div class="contact__grid"><form class="contact__form" id="contactForm" action="https://api.web3forms.com/submit" method="POST"><input type="hidden" name="access_key" value="8f1cd891-c46f-49eb-a60a-075e3918fb40" /><input type="hidden" name="subject" value="Nouveau message depuis le portfolio" /><input type="hidden" name="from_name" value="Portfolio Yuri Bausch" /><input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" /><div class="field"><label for="cf-name">Nom</label><input type="text" id="cf-name" name="name" placeholder="Votre nom" required /></div><div class="field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" placeholder="vous@exemple.fr" required /></div><div class="field field--full"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" placeholder="Parlez-moi de votre projet…" required></textarea></div><button type="submit" class="btn contact__submit">Envoyer le message</button><p class="contact__status" id="formStatus" role="status" aria-live="polite"></p></form><div class="contact__links"><a href="mailto:yuri.bausch@gmail.com" class="contact__card"><span class="contact__label">Email</span><span class="contact__value">yuri.bausch@gmail.com</span></a><a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener noreferrer" class="contact__card"><span class="contact__label">LinkedIn</span><span class="contact__value">in/yuri-bausch-cardoso</span></a><a href="tel:+33634360310" class="contact__card"><span class="contact__label">Téléphone</span><span class="contact__value">06 34 36 03 10</span></a><a href="https://behance.net/yuricardoso18" target="_blank" rel="noopener noreferrer" class="contact__card"><span class="contact__label">Behance</span><span class="contact__value">behance.net/yuricardoso18</span></a><div class="contact__card contact__card--static"><span class="contact__label">Localisation</span><span class="contact__value">Région parisienne · Île-de-France</span></div><a href="assets/CV-Yuri-Bausch.pdf" download class="contact__card"><span class="contact__label">CV</span><span class="contact__value">Télécharger mon CV (PDF) ↓</span></a></div></div></div></section>
+  <section class="contact section" id="contact">
+    <div class="contact__inner reveal">
+      <span class="section__num">04</span>
+      <h2 class="contact__title">Donnons vie à <span class="script">vos idées</span></h2>
+      <p class="contact__text">
+        <strong>En recherche d'une alternance dès septembre 2026</strong> en communication
+        &amp; brand content. Un projet, une marque à faire grandir, ou une opportunité
+        d'alternance&nbsp;? Parlons-en.
+      </p>
 
-  <footer class="footer"><span>Yuri Bausch<span class="script footer__script">Cardoso</span></span><nav class="footer__social"><a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://behance.net/yuricardoso18" target="_blank" rel="noopener noreferrer">Behance</a><a href="mailto:yuri.bausch@gmail.com">Email</a><a href="https://yuribausch.github.io/color-grade-tool/" target="_blank" rel="noopener noreferrer">Color Grade Tool</a></nav><span>© 2026 — Tous droits réservés</span></footer>
+      <div class="contact__grid">
+        <!-- Formulaire -->
+        <form class="contact__form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <!-- ⚠️ Remplace la valeur ci-dessous par ta clé gratuite (voir README) -->
+          <input type="hidden" name="access_key" value="8f1cd891-c46f-49eb-a60a-075e3918fb40" />
+          <input type="hidden" name="subject" value="Nouveau message depuis le portfolio" />
+          <input type="hidden" name="from_name" value="Portfolio Yuri Bausch" />
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+
+          <div class="field">
+            <label for="cf-name">Nom</label>
+            <input type="text" id="cf-name" name="name" placeholder="Votre nom" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input type="email" id="cf-email" name="email" placeholder="vous@exemple.com" required />
+          </div>
+          <div class="field field--full">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Parlez-moi de votre projet…" required></textarea>
+          </div>
+          <button type="submit" class="btn contact__submit">Envoyer le message</button>
+          <p class="contact__status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <!-- Coordonnées -->
+        <div class="contact__links">
+          <a href="mailto:yuri.bausch@gmail.com" class="contact__card">
+            <span class="contact__label">Email</span>
+            <span class="contact__value">yuri.bausch@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener noreferrer" class="contact__card">
+            <span class="contact__label">LinkedIn</span>
+            <span class="contact__value">in/yuri-bausch-cardoso</span>
+          </a>
+          <a href="tel:+33634360310" class="contact__card">
+            <span class="contact__label">Téléphone</span>
+            <span class="contact__value">06 34 36 03 10</span>
+          </a>
+          <a href="https://behance.net/yuricardoso18" target="_blank" rel="noopener noreferrer" class="contact__card">
+            <span class="contact__label">Behance</span>
+            <span class="contact__value">behance.net/yuricardoso18</span>
+          </a>
+          <div class="contact__card contact__card--static">
+            <span class="contact__label">Localisation</span>
+            <span class="contact__value">Région parisienne · Île-de-France</span>
+          </div>
+          <a href="assets/CV-Yuri-Bausch.pdf" download class="contact__card">
+            <span class="contact__label">CV</span>
+            <span class="contact__value">Télécharger mon CV (PDF) ↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span>Yuri Bausch<span class="script footer__script">Cardoso</span></span>
+    <nav class="footer__social">
+      <a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://behance.net/yuricardoso18" target="_blank" rel="noopener noreferrer">Behance</a>
+      <a href="mailto:yuri.bausch@gmail.com">Email</a>
+      <a href="https://yuribausch.github.io/color-grade-tool/" target="_blank" rel="noopener noreferrer">Color Grade Tool</a>
+    </nav>
+    <span>© 2026 — Tous droits réservés</span>
+  </footer>
 
   <!-- ===== LIGHTBOX ===== -->
-  <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox__close" id="lbClose" aria-label="Fermer">&times;</button><button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Précédent">&#8249;</button><img src="" alt="" id="lbImg" /><button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Suivant">&#8250;</button></div>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lbClose" aria-label="Fermer">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Précédent">&#8249;</button>
+    <img src="" alt="" id="lbImg" />
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Suivant">&#8250;</button>
+  </div>
 
   <script src="script.js"></script>
+
+  <!-- Statistiques de visite (GoatCounter, sans cookie) — remplace VOTRECODE par ton code (voir README) -->
   <script>
     (function () {
-      var CODE = "yuribausch";
+      var CODE = "yuribausch"; // ← ton identifiant GoatCounter
       if (CODE && CODE !== "VOTRECODE") {
         var s = document.createElement("script");
         s.async = true;
