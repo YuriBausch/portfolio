@@ -41,7 +41,7 @@ au lieu d'envoyer (les coordonnées email / téléphone / Behance restent cliqua
 
 ## 📄 3. Mettre à jour le CV / la disponibilité
 - **Remplacer le CV** : écrase le fichier `assets/CV-Yuri-Bausch.pdf` par ta nouvelle version (garde le même nom). Les 3 boutons « CV » pointent automatiquement dessus.
-- **Changer la date d'alternance** : cherche « septembre 2026 » dans `index.html` (badge du hero + section Contact) et « 2026 » dans la section Parcours, puis adapte.
+- **Changer le statut d'alternance** : cherche « Canalchat Grandialogue » dans `index.html` et `en/index.html` (badge du hero, note de prod., Parcours, Contact, balises meta), puis adapte.
 
 ---
 
