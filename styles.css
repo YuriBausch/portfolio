@@ -196,6 +196,7 @@ img { display: block; max-width: 100%; }
   border-radius: 50%;
   background: conic-gradient(rgba(236, 235, 230, 0.22) var(--a, 0deg), transparent 0);
 }
+.leader__cross { position: absolute; inset: 0; }
 .leader__cross::before, .leader__cross::after {
   content: ""; position: absolute; background: rgba(236, 235, 230, 0.4);
 }
