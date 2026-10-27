@@ -68,10 +68,10 @@ Le site se reconstruit tout seul en ~1 minute.
 Pour savoir combien de recruteurs visitent ton site :
 1. Va sur **https://www.goatcounter.com** → crée un compte gratuit et choisis un code (ex. `yuribausch`).
 2. Ton adresse de stats sera `https://TONCODE.goatcounter.com`.
-3. Dans **`index.html`** ET **`en/index.html`**, cherche `VOTRECODE` et remplace-le par ton code.
+3. Dans **`index.html`** ET **`en/index.html`**, cherche `yuribausch.goatcounter.com` (balise du script de stats **et** balise CSP) et remplace `yuribausch` par ton code.
 4. `git add -A && git commit -m "stats" && git push`. C'est actif ✅
 
-Tant que `VOTRECODE` n'est pas remplacé, aucun script de stats n'est chargé (site 100 % propre).
+Le script est figé en `count.v4.js` avec une empreinte SRI : s'il est modifié côté GoatCounter, le navigateur refuse de le charger.
 
 ---
 

@@ -3,17 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://yuribausch.goatcounter.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://yuribausch.goatcounter.com; connect-src 'self' https://api.web3forms.com https://yuribausch.goatcounter.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("theme") || "dark";
-        document.documentElement.setAttribute("data-theme", t);
-      } catch (e) {}
-    })();
-  </script>
+  <script src="theme-init.js"></script>
   <title>Yuri Bausch — Community Manager & Brand Content · Portfolio</title>
   <meta name="description" content="Portfolio de Yuri Bausch, Community Manager et Brand Content Creator, en M1 DA Vidéo à l'ESD Paris et en alternance chez Canalchat Grandialogue (région parisienne). Stratégie de communication, branding, création de contenu et production audiovisuelle." />
   <meta name="author" content="Yuri Bausch" />
@@ -187,8 +180,7 @@
       <figure class="about__media reveal">
         <div class="about__frame">
         <img src="assets/photo.webp" alt="Portrait de Yuri Bausch"
-             decoding="async"
-             onerror="this.onerror=null;this.src='assets/photo-placeholder.svg';" />
+             decoding="async" />
         <div class="about__hud" aria-hidden="true">
           <span class="vf__c vf__c--tl"></span><span class="vf__c vf__c--tr"></span>
           <span class="vf__c vf__c--bl"></span><span class="vf__c vf__c--br"></span>
@@ -715,18 +707,8 @@
 
   <script src="script.js"></script>
 
-  <!-- Statistiques de visite (GoatCounter, sans cookie) — remplace VOTRECODE par ton code (voir README) -->
-  <script>
-    (function () {
-      var CODE = "yuribausch"; // ← ton identifiant GoatCounter
-      if (CODE && CODE !== "VOTRECODE") {
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "//gc.zgo.at/count.js";
-        s.setAttribute("data-goatcounter", "https://" + CODE + ".goatcounter.com/count");
-        document.body.appendChild(s);
-      }
-    })();
-  </script>
+  <!-- Statistiques de visite (GoatCounter, sans cookie) — script figé + empreinte SRI -->
+  <script async src="https://gc.zgo.at/count.v4.js" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+" crossorigin="anonymous"
+          data-goatcounter="https://yuribausch.goatcounter.com/count"></script>
 </body>
 </html>

@@ -36,9 +36,9 @@ const GALLERIES = {
   ],
 };
 
-// Base path for assets (set to "../" on the English page in /en/)
-const ASSET_BASE = window.ASSET_BASE || "";
-const asset = (p) => ASSET_BASE + p;
+// Assets resolve relative to this script, so the /en/ page works too
+const ASSET_BASE = new URL(".", document.currentScript.src);
+const asset = (p) => new URL(p, ASSET_BASE).href;
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Timecode HH:MM:SS:FF at 24 fps
@@ -85,6 +85,14 @@ Object.entries(GALLERIES).forEach(([id, imgs]) => {
     });
   });
 });
+
+// ---- Photo de profil : visuel de remplacement si absente -------------
+const photo = document.querySelector(".about__frame img");
+if (photo) {
+  const fallback = () => { photo.src = asset("assets/photo-placeholder.svg"); };
+  if (photo.complete && photo.naturalWidth === 0) fallback();
+  else photo.addEventListener("error", fallback, { once: true });
+}
 
 // ---- Lightbox (moniteur) ---------------------------------------------
 const lb = document.getElementById("lightbox");
