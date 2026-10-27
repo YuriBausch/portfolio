@@ -229,90 +229,29 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
 
-// ---- Timeline de montage (nav du bas) --------------------------------
-// Toute la page = un film de 3 minutes ; le scroll déplace la tête de lecture.
-const FILM_SECONDS = 180;
+// ---- Barre de progression + lien actif de la nav ----------------------
 const edit = document.getElementById("edit");
 if (edit) {
-  const v1 = edit.querySelector(".edit__v1");
-  const a1 = edit.querySelector(".edit__a1");
-  const head = edit.querySelector(".edit__head");
-  const tracks = edit.querySelector(".edit__tracks");
-  const readout = document.getElementById("editTc");
+  const fill = edit.querySelector(".edit__fill");
   const sections = [...document.querySelectorAll("[data-clip]")];
+  const navLinks = document.querySelectorAll(".nav__links a");
 
-  // clips V1
-  const clips = sections.map((sec, i) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "edit__clip";
-    b.innerHTML = `<b>${pad2(i)}</b><span>${sec.dataset.clip}</span>`;
-    b.setAttribute("aria-label", sec.dataset.clip);
-    b.addEventListener("click", (e) => {
-      e.stopPropagation();
-      sec.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-    });
-    v1.appendChild(b);
-    return b;
-  });
-
-  // forme d'onde A1 (pseudo-aléatoire, stable)
-  let seed = 7;
-  const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
-  const frag = document.createDocumentFragment();
-  for (let i = 0; i < 160; i++) {
-    const bar = document.createElement("i");
-    bar.style.height = `${20 + Math.round(rnd() * 70 * (0.6 + 0.4 * Math.sin(i / 9)))}%`;
-    frag.appendChild(bar);
-  }
-  a1.appendChild(frag);
-
-  const layout = () => {
-    sections.forEach((sec, i) => { clips[i].style.flex = `${sec.offsetHeight} 1 0`; });
-  };
-
-  const maxScroll = () => document.documentElement.scrollHeight - innerHeight;
   const update = () => {
-    const p = Math.min(1, Math.max(0, scrollY / Math.max(1, maxScroll())));
-    const w = tracks.clientWidth - 2 * parseFloat(getComputedStyle(tracks).paddingLeft);
-    head.style.transform = `translateX(${p * w}px)`;
-    if (readout) readout.textContent = toTC(p * FILM_SECONDS);
+    const max = document.documentElement.scrollHeight - innerHeight;
+    fill.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollY / Math.max(1, max)))})`;
 
-    // clip actif = section qui contient le milieu de l'écran
+    // section active = celle qui contient le milieu de l'écran
     const mid = scrollY + innerHeight * 0.45;
     let active = 0;
     sections.forEach((sec, i) => { if (sec.offsetTop <= mid) active = i; });
-    clips.forEach((c, i) => c.classList.toggle("active", i === active));
-    document.querySelectorAll(".nav__links a").forEach((a) => {
+    navLinks.forEach((a) => {
       a.classList.toggle("active", a.getAttribute("href") === `#${sections[active].id}`);
     });
   };
 
-  // scrubbing : clic / glisser sur la timeline
-  let scrubbing = false;
-  const scrubTo = (clientX) => {
-    const r = tracks.getBoundingClientRect();
-    const padL = parseFloat(getComputedStyle(tracks).paddingLeft);
-    const p = Math.min(1, Math.max(0, (clientX - r.left - padL) / (r.width - 2 * padL)));
-    window.scrollTo({ top: p * maxScroll(), behavior: "auto" });
-  };
-  tracks.addEventListener("pointerdown", (e) => {
-    if (e.target.closest(".edit__clip")) return;
-    scrubbing = true;
-    document.documentElement.style.scrollBehavior = "auto";
-    tracks.setPointerCapture(e.pointerId);
-    scrubTo(e.clientX);
-  });
-  tracks.addEventListener("pointermove", (e) => { if (scrubbing) scrubTo(e.clientX); });
-  const stop = () => { scrubbing = false; document.documentElement.style.scrollBehavior = ""; };
-  tracks.addEventListener("pointerup", stop);
-  tracks.addEventListener("pointercancel", stop);
-
-  layout();
   update();
   window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", () => { layout(); update(); });
-  window.addEventListener("load", () => { layout(); update(); });
+  window.addEventListener("resize", update);
 }
 
 // ---- Contact form (Web3Forms AJAX) -----------------------------------
