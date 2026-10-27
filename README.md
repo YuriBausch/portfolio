@@ -95,7 +95,7 @@ robots.txt, sitemap.xml → référencement
 assets/
   photo.webp        → ta photo de profil
   CV-Yuri-Bausch.pdf→ ton CV (téléchargeable depuis le site)
-  og-image.png      → aperçu lors du partage du lien
+  og-image-2026.png → aperçu lors du partage du lien (changer le nom du fichier force les réseaux à le recharger)
   favicon.svg, apple-touch-icon.png … → icônes
   gallery/          → images des projets (WebP, optimisées)
   films/            → visuels des projets audiovisuels
