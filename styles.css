@@ -539,8 +539,8 @@ img { display: block; max-width: 100%; }
 .about__hud .vf__c--bl { bottom: 10px; left: 10px; }
 .about__hud .vf__c--br { bottom: 10px; right: 10px; }
 .about__af {
-  position: absolute; left: 50%; top: 30%;
-  width: 30%; aspect-ratio: 1;
+  position: absolute; left: 51.5%; top: 50%;
+  width: 34%; aspect-ratio: 4 / 5;
   transform: translate(-50%, -50%);
   border: 1.5px solid #3ff07c;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3);
