@@ -122,6 +122,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---------- Décor fixe derrière la page ---------- */
+@property --tint { syntax: "<color>"; inherits: false; initial-value: rgba(63, 208, 201, 0.12); }
 .scene {
   position: fixed; inset: 0;
   z-index: -1;
@@ -151,6 +152,21 @@ img { display: block; max-width: 100%; }
   61%  { opacity: 1; }
   83%  { opacity: 0.9; }
   86%  { opacity: 1; }
+}
+.scene__beam i::after {
+  /* teintes de l'image projetée qui passent dans le faisceau */
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(130% 130% at 0 0, transparent 25%, var(--tint, rgba(63, 208, 201, 0.12)) 60%, transparent 88%);
+  animation: film-tint 9s steps(1) infinite;
+}
+@keyframes film-tint {
+  0%   { --tint: rgba(63, 208, 201, 0.12); opacity: 1; }
+  14%  { --tint: rgba(255, 138, 61, 0.14); }
+  31%  { --tint: rgba(255, 255, 255, 0.06); }
+  43%  { --tint: rgba(230, 59, 59, 0.10); }
+  58%  { --tint: rgba(63, 208, 201, 0.08); }
+  72%  { --tint: rgba(255, 194, 75, 0.12); }
+  86%  { --tint: rgba(120, 140, 255, 0.08); }
 }
 .scene.is-warming .scene__beam i { animation: beam-warm 0.9s ease-out; }
 @keyframes beam-warm {
@@ -202,6 +218,49 @@ img { display: block; max-width: 100%; }
 :root[data-theme="light"] .gallery,
 :root[data-theme="light"] .pp__step {
   box-shadow: 0 30px 44px -28px rgba(70, 54, 28, 0.45), 0 2px 6px rgba(70, 54, 28, 0.08);
+}
+
+/* ---------- Décor détaillé du hero ---------- */
+.set { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.set__dark, .set__light { position: absolute; inset: 0; transition: opacity 0.6s ease; }
+.set__dark > *, .set__light > * { position: absolute; }
+:root[data-theme="light"] .set__dark,
+:root:not([data-theme="light"]) .set__light { opacity: 0; }
+
+/* Salle : fauteuils, panneau sortie, balisage */
+.set__seats { left: 0; bottom: 0; width: 100%; height: clamp(110px, 21vh, 220px); }
+.set__exit {
+  right: max(5vw, 3rem); top: 30%;
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.3rem 0.55rem;
+  font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em;
+  color: #c8ffd9;
+  background: #0f6b3a;
+  border: 1px solid #39d97f;
+  border-radius: 2px;
+  box-shadow: 0 0 18px rgba(57, 217, 127, 0.55), 0 0 60px rgba(57, 217, 127, 0.18);
+  opacity: 0.85;
+}
+.set__exit i { width: 0.8rem; height: 0.55rem; background: currentColor; clip-path: polygon(0 35%, 60% 35%, 60% 0, 100% 50%, 60% 100%, 60% 65%, 0 65%); }
+
+/* Plateau : pieds de lumière, perche son, câbles */
+.set__stand-wrap { bottom: 0; height: min(58%, 560px); aspect-ratio: 320 / 720; }
+.set__stand-wrap svg { width: 100%; height: 100%; overflow: visible; }
+.set__stand-wrap--l { left: -4.5vw; }
+.set__stand-wrap--r { right: -4.5vw; transform: scaleX(-1); }
+.set__boom {
+  top: 4.4rem; right: 0;
+  width: min(40vw, 540px); height: auto;
+  transform-origin: 100% 0;
+  animation: boom-sway 7s ease-in-out infinite alternate;
+}
+@keyframes boom-sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.4deg); } }
+.set__cables { left: 0; bottom: 0; width: 100%; height: clamp(50px, 9vh, 96px); }
+
+@media (max-width: 1100px) { .set__stand-wrap { display: none; } }
+@media (max-width: 900px) {
+  .set__boom { width: 62vw; top: 4rem; }
+  .set__exit { top: 6.6rem; font-size: 0.58rem; }
 }
 
 /* Rideau des projecteurs : trois rampes qui s'allument tour à tour */

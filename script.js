@@ -178,7 +178,7 @@ const sizeDust = () => {
   const n = Math.round(Math.min(110, (innerWidth * innerHeight) / 14000));
   motes = Array.from({ length: n }, () => ({
     x: Math.random(), y: Math.random(),
-    r: 0.5 + Math.random() * 1.5,
+    r: Math.random() < 0.12 ? 3 + Math.random() * 5 : 0.5 + Math.random() * 1.5,
     vx: (Math.random() - 0.3) * 0.00012, vy: (Math.random() - 0.6) * 0.0001,
     p: Math.random() * Math.PI * 2,
   }));
@@ -194,9 +194,18 @@ const drawDust = (t) => {
     if (!inBeam(m.x, m.y)) continue;
     const far = Math.hypot(m.x, m.y) / 1.41; // plus loin du projecteur = plus diffus
     const a = (0.55 - far * 0.35) * (0.6 + 0.4 * Math.sin(t / 900 + m.p));
-    dctx.fillStyle = `rgba(255, 238, 214, ${Math.max(0, a)})`;
+    const x = m.x * innerWidth, y = m.y * innerHeight;
+    if (m.r > 3) {
+      // particule hors du plan de netteté : un disque flou très léger
+      const g = dctx.createRadialGradient(x, y, 0, x, y, m.r);
+      g.addColorStop(0, `rgba(255, 238, 214, ${Math.max(0, a * 0.35)})`);
+      g.addColorStop(1, "rgba(255, 238, 214, 0)");
+      dctx.fillStyle = g;
+    } else {
+      dctx.fillStyle = `rgba(255, 238, 214, ${Math.max(0, a)})`;
+    }
     dctx.beginPath();
-    dctx.arc(m.x * innerWidth, m.y * innerHeight, m.r, 0, Math.PI * 2);
+    dctx.arc(x, y, m.r, 0, Math.PI * 2);
     dctx.fill();
   }
 };
@@ -211,6 +220,85 @@ sizeDust();
 syncDust();
 addEventListener("resize", () => { sizeDust(); syncDust(); });
 document.addEventListener("visibilitychange", syncDust);
+
+// ---- Décor détaillé du hero ------------------------------------------
+// Salle : rangées de fauteuils, panneau de sortie, balisage de l'allée.
+// Plateau : deux pieds de lumière, une perche son qui entre dans le cadre, des câbles.
+const hero = document.querySelector(".hero");
+if (hero) {
+  const en = root.lang === "en";
+
+  // fauteuils : rangée du fond plus petite, rangée de devant plus grande, allée vers la droite
+  const row = (w, gap, top, base, skip) => {
+    let d = "", rim = "";
+    for (let x = -30; x < 1640; x += w + gap) {
+      if (x > skip[0] && x < skip[1]) continue;
+      const r = w / 2;
+      d += `M${x} ${base}V${top + r * 0.7}Q${x} ${top} ${x + r} ${top}Q${x + w} ${top} ${x + w} ${top + r * 0.7}V${base}Z`;
+      rim += `M${x + 4} ${top + r * 0.5}Q${x + 4} ${top + 3} ${x + r} ${top + 3}Q${x + w - 4} ${top + 3} ${x + w - 4} ${top + r * 0.5}`;
+    }
+    return [d, rim];
+  };
+  const [backD, backRim] = row(64, 8, 72, 170, [1040, 1150]);
+  const [frontD, frontRim] = row(108, 12, 118, 240, [1010, 1180]);
+  const aisle = [150, 172, 194, 216].map((y, i) =>
+    `<circle cx="${1093 + i * 3}" cy="${y}" r="3" fill="#ffb347"/>`).join("");
+
+  const stand = `
+    <svg class="set__stand" viewBox="0 0 320 720" preserveAspectRatio="xMidYMax meet">
+      <defs><radialGradient id="softGlow"><stop offset="0" stop-color="#fffdf5" stop-opacity=".95"/><stop offset="1" stop-color="#fffdf5" stop-opacity="0"/></radialGradient></defs>
+      <ellipse cx="150" cy="712" rx="120" ry="8" fill="rgba(60,45,25,.18)"/>
+      <path d="M150 600 L58 712 M150 600 L242 712 M150 600 L150 712" stroke="#2b2925" stroke-width="7" stroke-linecap="round"/>
+      <path d="M150 604 V250" stroke="#2b2925" stroke-width="9" stroke-linecap="round"/>
+      <path d="M150 250 V230" stroke="#4a4640" stroke-width="13"/>
+      <g transform="rotate(24 150 222)">
+        <path d="M150 196 L282 120 L282 330 L150 252 Z" fill="#1f1d1a"/>
+        <path d="M150 196 L282 120 M150 252 L282 330" stroke="#3b3833" stroke-width="2"/>
+        <ellipse cx="330" cy="225" rx="110" ry="170" fill="url(#softGlow)"/>
+        <rect x="278" y="118" width="12" height="214" rx="2" fill="#fffdf6"/>
+      </g>
+    </svg>`;
+
+  const set = document.createElement("div");
+  set.className = "set";
+  set.setAttribute("aria-hidden", "true");
+  set.innerHTML = `
+    <div class="set__dark">
+      <span class="set__exit">${en ? "EXIT" : "SORTIE"}<i></i></span>
+      <svg class="set__seats" viewBox="0 0 1600 240" preserveAspectRatio="xMidYMax slice">
+        <defs><linearGradient id="rimLight" x1="0" x2="1">
+          <stop offset="0" stop-color="#ffecd0" stop-opacity=".05"/>
+          <stop offset="1" stop-color="#ffecd0" stop-opacity=".32"/>
+        </linearGradient></defs>
+        <path d="${backD}" fill="#0d0d0f"/>
+        <path d="${backRim}" fill="none" stroke="url(#rimLight)" stroke-width="2"/>
+        ${aisle}
+        <path d="${frontD}" fill="#050506"/>
+        <path d="${frontRim}" fill="none" stroke="url(#rimLight)" stroke-width="2.5"/>
+      </svg>
+    </div>
+    <div class="set__light">
+      <div class="set__stand-wrap set__stand-wrap--l">${stand}</div>
+      <div class="set__stand-wrap set__stand-wrap--r">${stand.replace('id="softGlow"', 'id="softGlow2"').replace("url(#softGlow)", "url(#softGlow2)")}</div>
+      <svg class="set__boom" viewBox="0 0 620 240">
+        <defs><filter id="fur"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="9"/></filter></defs>
+        <path d="M640 6 L196 150" stroke="#2b2925" stroke-width="7" stroke-linecap="round"/>
+        <path d="M640 3 L196 147" stroke="#6b665d" stroke-width="1.5" opacity=".6"/>
+        <circle cx="196" cy="150" r="13" fill="none" stroke="#2b2925" stroke-width="4"/>
+        <g transform="rotate(-18 150 170)">
+          <ellipse cx="128" cy="172" rx="78" ry="25" fill="#6e655a" filter="url(#fur)"/>
+          <ellipse cx="120" cy="164" rx="52" ry="9" fill="#8b8174" opacity=".55" filter="url(#fur)"/>
+        </g>
+      </svg>
+      <svg class="set__cables" viewBox="0 0 1600 120" preserveAspectRatio="xMidYMax slice">
+        <path d="M-20 92 C220 60 340 118 560 96 S900 70 1040 104 S1380 120 1620 84" fill="none" stroke="#1f1d1a" stroke-width="6" stroke-linecap="round"/>
+        <path d="M-20 108 C180 118 420 84 620 112 S980 124 1200 100" fill="none" stroke="#3a3631" stroke-width="4" stroke-linecap="round"/>
+        <rect x="1188" y="92" width="34" height="16" rx="3" fill="#2b2925"/>
+        <rect x="1222" y="97" width="8" height="6" fill="#c9a24a"/>
+      </svg>
+    </div>`;
+  hero.prepend(set);
+}
 
 // ---- Changement de thème : les projecteurs ---------------------------
 // sombre -> clair : le projecteur s'éteint, puis le plateau s'allume en trois « clac »
