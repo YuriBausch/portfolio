@@ -34,7 +34,9 @@
 
   --pad:   clamp(1rem, 5vw, 5rem);
   --maxw:  1240px;
-  --edit-h: 3px;           /* hauteur de la barre de progression en bas */
+  --edit-h: 3px;
+  --nv-blue: #4d6ff2;  /* bleu Pierrot le fou */
+  --nv-red:  #e2231a;           /* hauteur de la barre de progression en bas */
   color-scheme: dark;
 }
 
@@ -518,14 +520,34 @@ img { display: block; max-width: 100%; }
 .section__head--row { justify-content: space-between; }
 .section__head--row > .section__headmain { display: flex; align-items: flex-end; gap: clamp(1.2rem, 4vw, 3rem); flex-wrap: wrap; }
 
+/* Chapitres façon intertitres de Godard : lettres bleu / blanc / rouge */
 .section__num {
   display: block;
-  font-family: var(--mono);
-  font-size: 0.72rem; letter-spacing: 0.25em;
+  font-family: var(--display); font-weight: 800; font-stretch: 100%;
+  font-size: clamp(1rem, 1.5vw, 1.25rem); letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--rec);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
 }
+.godard i { font-style: normal; }
+.godard i:nth-of-type(3n+1) { color: var(--nv-blue); }
+.godard i:nth-of-type(3n+2) { color: var(--ink); }
+.godard i:nth-of-type(3n)   { color: var(--nv-red); }
+
+/* Sous-titres coréens, comme un film sous-titré */
+.sub-ko {
+  display: block;
+  margin-top: 0.7rem;
+  font-family: "Noto Sans KR", var(--body);
+  font-weight: 500; font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: 0 0 2px #000, 0 1px 3px #000, 0 0 1px #000;
+}
+.sub-ko--hero { margin-top: 0.5rem; font-size: clamp(0.85rem, 1.2vw, 1rem); opacity: 0.92; }
+/* en clair : sous-titre noir détouré de blanc (les tableaux du ciné-club restent sombres) */
+:root[data-theme="light"] .sub-ko { color: #111; text-shadow: 0 0 2px #fff, 0 1px 3px rgba(255, 255, 255, 0.9); }
+:root[data-theme="light"] .board .sub-ko { color: #fff; text-shadow: 0 0 2px #000, 0 1px 3px #000; }
 .section__title {
   font-family: var(--display);
   font-weight: 900;
@@ -1094,6 +1116,59 @@ img { display: block; max-width: 100%; }
 a.contact__card:hover { color: var(--rec); padding-left: 0.4rem; }
 a.contact__card:hover .contact__label { color: var(--rec); }
 
+/* ---------- 04 · CINÉ-CLUB : tableau à lettres d'un cinéma de quartier ---------- */
+.cineclub__intro { max-width: 60ch; color: var(--ink-soft); margin: -1.4rem 0 2.4rem; }
+.cineclub__intro a { color: var(--ink); border-bottom: 1px solid var(--rec); }
+.cineclub__intro a:hover { color: var(--rec); }
+.cineclub__grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: clamp(1.2rem, 3vw, 2rem);
+  align-items: start;
+}
+.board {
+  --ink: #f1efe8; --ink-soft: #8f8d87;
+  padding: 1.4rem clamp(1rem, 2.5vw, 1.8rem) 1.6rem;
+  background: #151517;
+  border: 8px solid #0b0b0c;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), var(--shadow);
+  color: var(--ink);
+}
+.board__head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding-bottom: 0.9rem; margin-bottom: 0.4rem;
+  border-bottom: 2px solid var(--nv-red);
+  font-family: var(--display); font-weight: 800; font-stretch: 100%;
+  font-size: 0.95rem; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.board__head .sub-ko { margin: 0; font-size: 0.85rem; }
+.board__list { list-style: none; }
+.board__list li {
+  display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); column-gap: 0.6rem;
+  min-height: 48px; padding: 0.6rem 0;
+  align-content: center;
+  /* rainure du tableau à lettres */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.board__list li:last-child { border-bottom: 0; box-shadow: none; }
+.board__n { grid-row: span 2; font-family: var(--mono); font-size: 0.7rem; color: var(--nv-red); padding-top: 0.25rem; }
+.board__title {
+  font-family: var(--display); font-weight: 800; font-stretch: 80%;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1;
+}
+.board__ko { font-family: "Noto Sans KR", var(--body); font-weight: 500; font-size: 0.8em; color: var(--ink-soft); margin-left: 0.4rem; text-transform: none; }
+.board__meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--ink-soft); }
+
+/* Carton « Fin » des films français des années 60, sous-titré en coréen */
+.fin { grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; padding: 1rem 0 2rem; }
+.fin__fr {
+  font-family: var(--display); font-weight: 900; font-stretch: 100%;
+  font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1; letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.fin__ko { margin-top: 0.6rem; }
+
 /* ---------- Footer : fin du film ---------- */
 .footer {
   max-width: var(--maxw); margin: 0 auto;
@@ -1254,16 +1329,16 @@ a.contact__card:hover .contact__label { color: var(--rec); }
   .pp__step--next { text-align: left; }
 }
 
-/* ---------- Transition entre les pages : cut au noir ---------- */
+/* ---------- Transition entre les pages : l'iris (Les Quatre Cents Coups) ---------- */
 /* changement de page : coupe franche au noir, puis ouverture */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
 }
 ::view-transition { background: #000; }
-::view-transition-old(root) { animation: cut-out 0.16s ease-in both; }
-::view-transition-new(root) { animation: cut-in 0.45s ease-out 0.12s both; }
-@keyframes cut-out { to { opacity: 0; } }
-@keyframes cut-in { from { opacity: 0; } }
+::view-transition-old(root) { animation: iris-close 0.42s cubic-bezier(.6, 0, .9, .5) both; }
+::view-transition-new(root) { animation: iris-open 0.55s cubic-bezier(.1, .5, .4, 1) 0.42s both; }
+@keyframes iris-close { from { clip-path: circle(75% at 50% 50%); } to { clip-path: circle(0 at 50% 50%); } }
+@keyframes iris-open { from { clip-path: circle(0 at 50% 50%); } to { clip-path: circle(75% at 50% 50%); } }
 
 /* ---------- Lightbox = moniteur ---------- */
 .lightbox {

@@ -86,6 +86,14 @@ Object.entries(GALLERIES).forEach(([id, imgs]) => {
   });
 });
 
+// ---- Intertitres façon Godard : une couleur par lettre -----------------
+document.querySelectorAll(".section__num, .fin__fr").forEach((el) => {
+  const text = el.textContent;
+  el.classList.add("godard");
+  el.innerHTML = `<span class="visually-hidden">${text}</span>` +
+    [...text].map((c) => (c === " " ? " " : `<i aria-hidden="true">${c}</i>`)).join("");
+});
+
 // ---- Photo de profil : visuel de remplacement si absente -------------
 const photo = document.querySelector(".about__frame img");
 if (photo) {

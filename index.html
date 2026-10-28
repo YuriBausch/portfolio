@@ -68,6 +68,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,600..800&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&text=%EA%B0%80%EA%B0%9C%EA%B2%BD%EA%B5%AD%EB%81%9D%EB%84%A4%EB%8B%88%EB%93%9C%EB%9D%BD%EB%9E%91%EB%9E%9C%EB%9F%BD%EB%A0%A5%EB%A6%AC%EB%A7%A4%EB%AE%A4%EB%B3%B4%EB%B8%8C%EC%82%B4%EC%86%8C%EC%8A%A4%EC%8B%9C%EC%96%B5%EC%97%90%EC%97%B0%EC%98%81%EC%98%AC%EC%9D%98%EC%9D%B4%EC%9D%B8%EC%9E%91%EC%A0%80%EC%A1%B1%EC%B2%98%EC%B6%94%EC%B8%A0%EC%BB%A4%EC%BD%98%ED%81%AC%ED%81%B4%ED%84%B0%ED%85%90%ED%86%B5%ED%8B%B0%ED%92%88%ED%94%84%ED%95%9C%ED%99%94&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -81,7 +82,8 @@
       <a href="#about"><b>01</b>À propos</a>
       <a href="#parcours"><b>02</b>Parcours</a>
       <a href="#projects"><b>03</b>Projets</a>
-      <a href="#contact"><b>04</b>Contact</a>
+      <a href="#cineclub"><b>04</b>Ciné-club</a>
+      <a href="#contact"><b>05</b>Contact</a>
     </nav>
     <div class="nav__actions">
       <a href="#contact" class="btn btn--small nav__cta">Me contacter</a>
@@ -126,6 +128,7 @@
       <p class="hero__role">
         <strong>Community Manager</strong> et <em>Brand Content Creator</em>
       </p>
+      <p class="sub-ko sub-ko--hero" lang="ko">커뮤니티 매니저 &amp; 브랜드 콘텐츠 크리에이터</p>
       <div class="hero__cta">
         <a href="#projects" class="btn">Voir mes projets</a>
         <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--ghost btn--cv">
@@ -143,8 +146,9 @@
   <section class="about section" id="about" data-clip="À propos">
     <div class="section__head reveal">
       <div>
-        <span class="section__num">Scène 01 — Le personnage</span>
+        <span class="section__num">Chapitre 1 · Le personnage</span>
         <h2 class="section__title">À <span class="script">propos</span></h2>
+        <span class="sub-ko" lang="ko">소개</span>
       </div>
     </div>
     <div class="about__grid">
@@ -196,8 +200,9 @@
     <div class="section__head section__head--row reveal">
       <div class="section__headmain">
         <div>
-          <span class="section__num">Scène 02 — Feuille de service</span>
+          <span class="section__num">Chapitre 2 · Feuille de service</span>
           <h2 class="section__title">Mon <span class="script">parcours</span></h2>
+        <span class="sub-ko" lang="ko">경력</span>
         </div>
       </div>
       <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--cv">
@@ -318,8 +323,9 @@
   <section class="projects section" id="projects" data-clip="Projets">
     <div class="section__head reveal">
       <div>
-        <span class="section__num">Scène 03 — Les rushes</span>
+        <span class="section__num">Chapitre 3 · Les rushes</span>
         <h2 class="section__title">Mes <span class="script">projets</span></h2>
+        <span class="sub-ko" lang="ko">작품</span>
       </div>
     </div>
 
@@ -362,13 +368,48 @@
     </div>
   </section>
 
+  <!-- ===== 04 · CINÉ-CLUB ===== -->
+  <section class="cineclub section" id="cineclub" data-clip="Ciné-club">
+    <div class="section__head reveal">
+      <div>
+        <span class="section__num">Chapitre 4 · Le ciné-club</span>
+        <h2 class="section__title">Ciné-<span class="script">club</span></h2>
+        <span class="sub-ko" lang="ko">시네클럽</span>
+      </div>
+    </div>
+    <p class="cineclub__intro reveal">Les films qui m'inspirent, entre cinéma français et cinéma coréen. Le reste de mes séances est sur
+      <a href="https://letterboxd.com/Yuri_Kun/" target="_blank" rel="noopener noreferrer">Letterboxd ↗</a></p>
+    <div class="cineclub__grid reveal">
+      <div class="board">
+        <h3 class="board__head">Cinéma français <span class="sub-ko" lang="ko">프랑스 영화</span></h3>
+        <ol class="board__list">
+          <li><span class="board__n">01</span><span class="board__title">Nouvelle Vague</span><span class="board__meta">Réal. Maël Bausch &amp; Clément Sauter · 2024</span></li>
+          <li><span class="board__n">02</span><span class="board__title">L'Étranger</span><span class="board__meta">Réal. François Ozon · 2025</span></li>
+          <li><span class="board__n">03</span><span class="board__title">Anatomie d'une chute</span><span class="board__meta">Réal. Justine Triet · 2023</span></li>
+          <li><span class="board__n">04</span><span class="board__title">L'Amour ouf</span><span class="board__meta">Réal. Gilles Lellouche · 2024</span></li>
+          <li><span class="board__n">05</span><span class="board__title">Les Tontons flingueurs</span><span class="board__meta">Réal. Georges Lautner · 1963</span></li>
+          <li><span class="board__n">06</span><span class="board__title">Arco</span><span class="board__meta">Réal. Ugo Bienvenu · 2025</span></li>
+        </ol>
+      </div>
+      <div class="board">
+        <h3 class="board__head">Cinéma coréen <span class="sub-ko" lang="ko">한국 영화</span></h3>
+        <ol class="board__list">
+          <li><span class="board__n">01</span><span class="board__title">Memories of Murder <span class="board__ko" lang="ko">살인의 추억</span></span><span class="board__meta">Réal. Bong Joon-ho · 2003</span></li>
+          <li><span class="board__n">02</span><span class="board__title">Old Boy <span class="board__ko" lang="ko">올드보이</span></span><span class="board__meta">Réal. Park Chan-wook · 2003</span></li>
+          <li><span class="board__n">03</span><span class="board__title">A Normal Family <span class="board__ko" lang="ko">보통의 가족</span></span><span class="board__meta">Réal. Hur Jin-ho · 2023</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== 04 · CONTACT ===== -->
   <section class="contact section" id="contact" data-clip="Contact">
     <div class="contact__inner reveal">
       <div class="contact__head">
         <div>
-          <span class="section__num">Scène 04 — Dernière prise</span>
+          <span class="section__num">Chapitre 5 · Dernière prise</span>
           <h2 class="contact__title">Donnons vie à <span class="script">vos idées</span></h2>
+          <span class="sub-ko" lang="ko">연락처</span>
         </div>
       </div>
       <p class="contact__text">
@@ -442,6 +483,7 @@
   </main>
 
   <footer class="footer">
+    <div class="fin"><span class="fin__fr">Fin</span><span class="fin__ko sub-ko" lang="ko">끝</span></div>
     <span class="footer__film">Un film de <b>Yuri Bausch<span class="script footer__script">Cardoso</span></b></span>
     <nav class="footer__social">
       <a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener noreferrer">LinkedIn</a>
