@@ -139,9 +139,9 @@ img { display: block; max-width: 100%; }
 }
 .scene__beam i {
   position: absolute; inset: 0;
-  clip-path: polygon(0 0, 16% 0, 100% 58%, 100% 100%, 62% 100%);
+  clip-path: polygon(0 10%, 3% 9%, 100% 50%, 100% 100%, 60% 100%, 0 18%);
   background:
-    radial-gradient(140% 140% at 0 0, rgba(255, 236, 205, 0.32), rgba(255, 236, 205, 0.1) 45%, transparent 80%);
+    radial-gradient(140% 140% at 0 14%, rgba(255, 236, 205, 0.34), rgba(255, 236, 205, 0.1) 45%, transparent 80%);
   animation: beam-flicker 2.6s steps(1) infinite;
 }
 @keyframes beam-flicker {
@@ -156,7 +156,7 @@ img { display: block; max-width: 100%; }
 .scene__beam i::after {
   /* teintes de l'image projetée qui passent dans le faisceau */
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(130% 130% at 0 0, transparent 25%, var(--tint, rgba(63, 208, 201, 0.12)) 60%, transparent 88%);
+  background: radial-gradient(130% 130% at 0 14%, transparent 25%, var(--tint, rgba(63, 208, 201, 0.12)) 60%, transparent 88%);
   animation: film-tint 9s steps(1) infinite;
 }
 @keyframes film-tint {
@@ -176,6 +176,22 @@ img { display: block; max-width: 100%; }
   100% { opacity: 1; transform: none; }
 }
 .scene__dust { inset: 0; width: 100%; height: 100%; }
+/* fenêtre de la cabine de projection : d'où sort le faisceau */
+.scene__booth {
+  left: 0; top: 9vh;
+  width: 14px; height: 9vh;
+  background: linear-gradient(to right, #fff6e4, #ffe7c2);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 14px 4px rgba(255, 232, 196, 0.75), 0 0 60px 18px rgba(255, 220, 170, 0.25);
+}
+.scene__booth::after {
+  /* reflet de l'objectif */
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: 30vw; height: 2px; margin-top: -1px;
+  background: linear-gradient(to right, rgba(255, 236, 205, 0.55), transparent);
+  filter: blur(1px);
+}
+:root[data-theme="light"] .scene__booth { opacity: 0; }
 
 /* Clair : plateau studio — fond cyclo, deux boîtes à lumière, marques au sol */
 .scene__soft {
@@ -186,21 +202,8 @@ img { display: block; max-width: 100%; }
 }
 .scene__soft--l { left: -16vw; }
 .scene__soft--r { right: -16vw; }
-.scene__mark { width: 46px; height: 46px; }
-.scene__mark::before, .scene__mark::after {
-  content: ""; position: absolute;
-  background: var(--mark, #f2c230);
-  clip-path: polygon(2% 0, 98% 6%, 100% 94%, 0 100%);
-  opacity: 0.85;
-}
-.scene__mark::before { left: 0; right: 0; top: 50%; height: 9px; margin-top: -4.5px; }
-.scene__mark::after  { top: 0; bottom: 0; left: 50%; width: 9px; margin-left: -4.5px; }
-.scene__mark--a { left: 2.2vw; bottom: 16vh; transform: rotate(9deg); }
-.scene__mark--b { right: 2.4vw; top: 48vh; transform: rotate(-7deg); --mark: #e2463c; }
-.scene__mark--b::before { top: 0; margin-top: 0; } /* en T */
 
-:root:not([data-theme="light"]) .scene__soft,
-:root:not([data-theme="light"]) .scene__mark { opacity: 0; }
+:root:not([data-theme="light"]) .scene__soft { opacity: 0; }
 :root[data-theme="light"] .scene__beam,
 :root[data-theme="light"] .scene__dust { opacity: 0; }
 :root[data-theme="light"] .scene {
@@ -209,7 +212,6 @@ img { display: block; max-width: 100%; }
     radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(110, 88, 56, 0.14)),
     linear-gradient(to bottom, transparent 62%, rgba(120, 98, 62, 0.09));
 }
-@media (max-width: 900px) { .scene__mark { display: none; } }
 
 /* Ombres douces des projecteurs sur le plateau */
 :root[data-theme="light"] .poster__img,
@@ -220,48 +222,14 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 30px 44px -28px rgba(70, 54, 28, 0.45), 0 2px 6px rgba(70, 54, 28, 0.08);
 }
 
-/* ---------- Décor détaillé du hero ---------- */
-.set { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+/* ---------- Décor du hero : deux illustrations ---------- */
+.set { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
 .set__dark, .set__light { position: absolute; inset: 0; transition: opacity 0.6s ease; }
-.set__dark > *, .set__light > * { position: absolute; }
+.set svg { display: block; width: 100%; height: 100%; }
 :root[data-theme="light"] .set__dark,
 :root:not([data-theme="light"]) .set__light { opacity: 0; }
-
-/* Salle : fauteuils, panneau sortie, balisage */
-.set__seats { left: 0; bottom: 0; width: 100%; height: clamp(110px, 21vh, 220px); }
-.set__exit {
-  right: max(5vw, 3rem); top: 30%;
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  padding: 0.3rem 0.55rem;
-  font-family: var(--mono); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em;
-  color: #c8ffd9;
-  background: #0f6b3a;
-  border: 1px solid #39d97f;
-  border-radius: 2px;
-  box-shadow: 0 0 18px rgba(57, 217, 127, 0.55), 0 0 60px rgba(57, 217, 127, 0.18);
-  opacity: 0.85;
-}
-.set__exit i { width: 0.8rem; height: 0.55rem; background: currentColor; clip-path: polygon(0 35%, 60% 35%, 60% 0, 100% 50%, 60% 100%, 60% 65%, 0 65%); }
-
-/* Plateau : pieds de lumière, perche son, câbles */
-.set__stand-wrap { bottom: 0; height: min(58%, 560px); aspect-ratio: 320 / 720; }
-.set__stand-wrap svg { width: 100%; height: 100%; overflow: visible; }
-.set__stand-wrap--l { left: -4.5vw; }
-.set__stand-wrap--r { right: -4.5vw; transform: scaleX(-1); }
-.set__boom {
-  top: 4.4rem; right: 0;
-  width: min(40vw, 540px); height: auto;
-  transform-origin: 100% 0;
-  animation: boom-sway 7s ease-in-out infinite alternate;
-}
-@keyframes boom-sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.4deg); } }
-.set__cables { left: 0; bottom: 0; width: 100%; height: clamp(50px, 9vh, 96px); }
-
-@media (max-width: 1100px) { .set__stand-wrap { display: none; } }
-@media (max-width: 900px) {
-  .set__boom { width: 62vw; top: 4rem; }
-  .set__exit { top: 6.6rem; font-size: 0.58rem; }
-}
+/* sur petit écran, le matériel passerait derrière le texte : on garde le sol */
+@media (max-width: 900px) { .set .gear { display: none; } }
 
 /* Rideau des projecteurs : trois rampes qui s'allument tour à tour */
 .lights {
@@ -474,7 +442,8 @@ img { display: block; max-width: 100%; }
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
-.hero__name { font-size: clamp(5.5rem, 21vw, 18rem); display: block; }
+/* suit aussi la hauteur : le hero tient dans le premier écran */
+.hero__name { font-size: clamp(5.5rem, min(21vw, 23vh), 18rem); display: block; }
 .hero__name--2 {
   color: transparent;
   -webkit-text-stroke: 2px var(--ink);
@@ -488,7 +457,7 @@ img { display: block; max-width: 100%; }
   top: 38%;
   font-family: var(--script);
   font-weight: 400; font-stretch: 100%;
-  font-size: clamp(3rem, 9vw, 8rem);
+  font-size: clamp(3rem, min(9vw, 10vh), 8rem);
   color: var(--red);
   text-transform: none;
   letter-spacing: 0;
