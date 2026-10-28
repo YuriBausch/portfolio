@@ -67,7 +67,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,600..800&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,600..800&family=Great+Vibes&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -100,41 +100,50 @@
   </header>
 
   <main>
-  <!-- ===== COUVERTURE : le numéro de la revue ===== -->
-  <section class="hero cover" id="hero" data-clip="Couverture">
-    <div class="cover__inner">
-      <div class="cover__top">
-        <span>N° 01</span><span>Revue de communication, de marque &amp; de cinéma</span><span>Automne 2026</span>
-      </div>
-      <h1 class="cover__mast">Yuri Bausch</h1>
-      <div class="cover__body">
-        <figure class="cover__still">
-          <img src="assets/photo.webp" alt="Portrait de Yuri Bausch" width="900" height="1125" decoding="async" />
-        </figure>
-        <div class="cover__lines">
-          <p class="hero__badge"><span class="hero__badge-dot"></span>En alternance chez Canalchat Grandialogue</p>
-          <p class="cover__lead"><b>Community Manager</b> &amp; <em>Brand Content Creator</em></p>
-          <ul class="cover__teasers">
-            <li><span>Entretien</span> M1 DA Vidéo à l'ESD, entre stratégie et image</li>
-            <li><span>Dossier</span> Saint Laurent, Le Lieu Utile, anatomy., Nouvelle-Calédonie</li>
-            <li><span>Tournages</span> Caméra, production et réalisation sur des films indépendants</li>
-          </ul>
-          <div class="hero__cta">
-            <a href="#projects" class="btn">Lire le numéro</a>
-            <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--ghost btn--cv">
-              <span class="btn--cv-icon">↓</span> Mon CV (PDF)
-            </a>
-          </div>
-        </div>
+  <!-- ===== HERO : viseur caméra ===== -->
+  <section class="hero" id="hero" data-clip="Intro">
+    <div class="hero__bars" aria-hidden="true"></div>
+    <div class="hero__leak" aria-hidden="true"></div>
+
+    <div class="vf" aria-hidden="true">
+      <span class="vf__c vf__c--tl"></span><span class="vf__c vf__c--tr"></span>
+      <span class="vf__c vf__c--bl"></span><span class="vf__c vf__c--br"></span>
+      <div class="vf__row">
+        <span class="vf__rec">REC</span><span class="vf__tc" id="tc">00:00:00:00</span>
       </div>
     </div>
+
+    <div class="hero__inner">
+      <p class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        En alternance chez Canalchat Grandialogue
+      </p>
+      <h1 class="hero__title">
+        <span class="hero__name">YURI</span>
+        <span class="hero__script">Portfolio</span>
+        <span class="hero__name hero__name--2">BAUSCH</span>
+      </h1>
+      <p class="hero__role">
+        <strong>Community Manager</strong> et <em>Brand Content Creator</em>
+      </p>
+      <div class="hero__cta">
+        <a href="#projects" class="btn">Voir mes projets</a>
+        <a href="assets/CV-Yuri-Bausch.pdf" download class="btn btn--ghost btn--cv">
+          <span class="btn--cv-icon">↓</span> Mon CV (PDF)
+        </a>
+      </div>
+    </div>
+    <a href="#about" class="hero__scroll" aria-label="Défiler">
+      Action
+      <span></span>
+    </a>
   </section>
 
   <!-- ===== 01 · ABOUT ===== -->
   <section class="about section" id="about" data-clip="À propos">
     <div class="section__head reveal">
       <div>
-        <span class="section__num">Entretien · p. 06</span>
+        <span class="section__num">Chapitre 1 · Le personnage</span>
         <h2 class="section__title">À <span class="script">propos</span></h2>
       </div>
     </div>
@@ -187,7 +196,7 @@
     <div class="section__head section__head--row reveal">
       <div class="section__headmain">
         <div>
-          <span class="section__num">Filmographie · p. 14</span>
+          <span class="section__num">Chapitre 2 · Feuille de service</span>
           <h2 class="section__title">Mon <span class="script">parcours</span></h2>
         </div>
       </div>
@@ -309,7 +318,7 @@
   <section class="projects section" id="projects" data-clip="Projets">
     <div class="section__head reveal">
       <div>
-        <span class="section__num">Dossier · p. 22</span>
+        <span class="section__num">Chapitre 3 · Les rushes</span>
         <h2 class="section__title">Mes <span class="script">projets</span></h2>
       </div>
     </div>
@@ -358,7 +367,7 @@
     <div class="contact__inner reveal">
       <div class="contact__head">
         <div>
-          <span class="section__num">Courrier des lecteurs · p. 38</span>
+          <span class="section__num">Chapitre 4 · Dernière prise</span>
           <h2 class="contact__title">Donnons vie à <span class="script">vos idées</span></h2>
         </div>
       </div>
@@ -433,7 +442,7 @@
   </main>
 
   <footer class="footer">
-    <div class="fin"><span class="fin__fr">Fin</span></div>
+    <div class="fin"><span class="fin__fr">Fin</span><span class="fin__motto">Carpe diem</span></div>
     <span class="footer__film">Un film de <b>Yuri Bausch<span class="script footer__script">Cardoso</span></b></span>
     <nav class="footer__social">
       <a href="https://www.linkedin.com/in/yuri-bausch-cardoso" target="_blank" rel="noopener noreferrer">LinkedIn</a>

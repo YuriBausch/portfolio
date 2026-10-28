@@ -8,44 +8,74 @@
   <link rel="icon" type="image/svg+xml" href="/portfolio/assets/favicon.svg" />
   <meta name="robots" content="noindex" />
   <style>
-    :root { --bg:#0b0b0c; --ink:#ecebe6; --soft:#8f8d87; --rec:#ff3b30; }
+    /* Clin d'œil au générique de Se7en : lettres grattées, tremblantes, pellicule rayée */
+    :root { --bg:#070707; --ink:#e9e6dc; --soft:#8a877f; --rec:#ff3b30; }
     * { margin:0; box-sizing:border-box; }
     body {
       min-height:100vh; display:flex; align-items:center; justify-content:center;
-      background:radial-gradient(60% 60% at 20% 20%, rgba(63,208,201,.12), transparent 70%),
-                 radial-gradient(60% 60% at 85% 85%, rgba(255,138,61,.12), transparent 70%), var(--bg);
-      color:var(--ink); font-family:system-ui, -apple-system, "Segoe UI", sans-serif;
-      text-align:center; padding:2rem;
+      background:var(--bg); color:var(--ink);
+      font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-align:center; padding:2rem; overflow:hidden;
     }
-    .wrap { max-width:520px; }
+    /* rayures verticales et poussière de la pellicule */
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none;
+      background:
+        linear-gradient(90deg, transparent 0 18%, rgba(255,255,255,.07) 18% 18.15%, transparent 18.15% 63%, rgba(255,255,255,.05) 63% 63.1%, transparent 63.1%),
+        radial-gradient(circle at 72% 30%, rgba(255,255,255,.14) 0 1px, transparent 2px),
+        radial-gradient(circle at 24% 76%, rgba(255,255,255,.1) 0 1px, transparent 2px);
+      animation:scratches .5s steps(1) infinite;
+    }
+    @keyframes scratches {
+      0% { transform:translateX(0); opacity:1; }
+      30% { transform:translateX(-7vw); opacity:.6; }
+      60% { transform:translateX(4vw); opacity:.9; }
+    }
+    .wrap { max-width:560px; position:relative; }
+    .scratch { filter:url(#scratch); }
+    .jitter { animation:jitter .24s steps(1) infinite; }
+    @keyframes jitter {
+      0%   { transform:translate(0,0); opacity:1; }
+      25%  { transform:translate(-2px,1px); opacity:.85; }
+      50%  { transform:translate(1px,-1px); opacity:1; }
+      75%  { transform:translate(2px,2px); opacity:.7; }
+    }
     .tag {
-      font-family:ui-monospace, Consolas, monospace; font-size:.75rem; letter-spacing:.25em;
-      text-transform:uppercase; color:var(--rec); display:inline-flex; gap:.5rem; align-items:center;
+      font-size:.72rem; letter-spacing:.32em; text-transform:lowercase; color:var(--soft);
     }
-    .tag::before { content:""; width:9px; height:9px; border-radius:50%; background:var(--rec); animation:b 1s infinite; }
-    @keyframes b { 50% { opacity:.15; } }
-    .code { font-weight:900; font-size:clamp(5rem,20vw,10rem); line-height:.9; letter-spacing:-3px; margin-top:1rem; }
-    .code span { color:transparent; -webkit-text-stroke:2px var(--ink); }
-    h1 { font-size:clamp(1.3rem,4vw,1.8rem); margin:1rem 0 .6rem; }
-    p { color:var(--soft); margin-bottom:2rem; font-size:1.05rem; }
+    .code {
+      font-weight:700; font-size:clamp(5.5rem,22vw,11rem); line-height:.9; letter-spacing:-2px;
+      margin:1.2rem 0 .4rem;
+    }
+    .code span { color:var(--rec); }
+    h1 { font-weight:400; font-size:clamp(1.1rem,4vw,1.5rem); letter-spacing:.18em; text-transform:lowercase; margin-bottom:.8rem; }
+    p { color:var(--soft); margin-bottom:2.2rem; font-size:1rem; }
     a {
-      display:inline-flex; align-items:center; gap:.5rem;
-      background:var(--ink); color:var(--bg); text-decoration:none;
-      font-family:ui-monospace, Consolas, monospace; font-weight:700; font-size:.85rem;
-      letter-spacing:.08em; text-transform:uppercase;
-      padding:.85rem 1.4rem; border-radius:4px; border:1px solid var(--ink);
-      transition:background .2s, color .2s, transform .2s;
+      display:inline-flex; gap:.5rem; align-items:center;
+      color:var(--ink); text-decoration:none;
+      font-size:.8rem; letter-spacing:.24em; text-transform:lowercase;
+      padding:.85rem 1.4rem; border:1px solid var(--ink);
+      transition:background .2s, color .2s;
     }
-    a:hover { background:var(--rec); border-color:var(--rec); color:#fff; transform:translateY(-2px); }
+    a:hover { background:var(--ink); color:var(--bg); }
+    @media (prefers-reduced-motion: reduce) {
+      body::before, .jitter { animation:none; }
+    }
   </style>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="scratch">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035 0.9" numOctaves="2" seed="7" />
+      <feDisplacementMap in="SourceGraphic" scale="7" />
+    </filter>
+  </svg>
   <div class="wrap">
-    <span class="tag">Coupez ! Plan manquant</span>
-    <div class="code">4<span>0</span>4</div>
-    <h1>Cette page n'existe pas</h1>
+    <span class="tag jitter">coupez ! plan manquant</span>
+    <div class="code scratch jitter">4<span>0</span>4</div>
+    <h1 class="scratch">cette page n'existe pas</h1>
     <p>Le lien est peut-être cassé ou la page a été déplacée.</p>
-    <a href="/portfolio/">← Retour au portfolio</a>
+    <a href="/portfolio/">← retour au portfolio</a>
   </div>
 </body>
 </html>

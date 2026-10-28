@@ -29,13 +29,12 @@
 
   --display: "Archivo", system-ui, sans-serif;
   --script:  "Great Vibes", cursive;
-  --body:    "Newsreader", Georgia, serif;   /* texte de revue */
+  --body:    "Inter", system-ui, sans-serif;
   --mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
   --pad:   clamp(1rem, 5vw, 5rem);
   --maxw:  1240px;
   --edit-h: 3px;
-  --yellow:  #f2c900;  /* jaune des couvertures de revue */
   --nv-blue: #4d6ff2;  /* bleu Pierrot le fou */
   --nv-red:  #e2231a;           /* hauteur de la barre de progression en bas */
   color-scheme: dark;
@@ -43,8 +42,8 @@
 
 /* Thème clair : le plateau studio (fond cyclo, encre noire) */
 :root[data-theme="light"] {
-  --bg:       #f1ede2;   /* papier de revue */
-  --bg-2:     #e8e3d6;
+  --bg:       #e9e5dc;   /* fond cyclo gris chaud */
+  --bg-2:     #e1ddd2;
   --panel:    #fbfaf4;
   --panel-2:  #f1eee2;
   --ink:      #151515;
@@ -54,7 +53,7 @@
   --shadow:   0 30px 60px -32px rgba(40, 32, 10, 0.35);
   --grade-a:  rgba(63, 160, 170, 0.14);
   --grade-b:  rgba(255, 138, 61, 0.16);
-  --nav-bg:   rgba(241, 237, 226, 0.86);
+  --nav-bg:   rgba(233, 229, 220, 0.82);
   color-scheme: light;
 }
 
@@ -124,7 +123,99 @@ img { display: block; max-width: 100%; }
   100% { transform: translate(0, 0); }
 }
 
-/* Ombres douces sur le papier */
+/* ---------- Décor fixe derrière la page ---------- */
+@property --tint { syntax: "<color>"; inherits: false; initial-value: rgba(63, 208, 201, 0.12); }
+.scene {
+  position: fixed; inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.scene > * { position: absolute; transition: opacity 0.6s ease; }
+
+/* Sombre : salle de projection — faisceau depuis la cabine, en haut à gauche */
+.scene__beam {
+  inset: 0;
+  filter: blur(16px);
+  mix-blend-mode: screen;
+}
+.scene__beam i {
+  position: absolute; inset: 0;
+  clip-path: polygon(0 10%, 3% 9%, 100% 50%, 100% 100%, 60% 100%, 0 18%);
+  background:
+    radial-gradient(140% 140% at 0 14%, rgba(255, 236, 205, 0.34), rgba(255, 236, 205, 0.1) 45%, transparent 80%);
+  animation: beam-flicker 2.6s steps(1) infinite;
+}
+@keyframes beam-flicker {
+  0%   { opacity: 1; }
+  17%  { opacity: 0.88; }
+  21%  { opacity: 1; }
+  58%  { opacity: 0.93; }
+  61%  { opacity: 1; }
+  83%  { opacity: 0.9; }
+  86%  { opacity: 1; }
+}
+.scene__beam i::after {
+  /* teintes de l'image projetée qui passent dans le faisceau */
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(130% 130% at 0 14%, transparent 25%, var(--tint, rgba(63, 208, 201, 0.12)) 60%, transparent 88%);
+  animation: film-tint 9s steps(1) infinite;
+}
+@keyframes film-tint {
+  0%   { --tint: rgba(63, 208, 201, 0.12); opacity: 1; }
+  14%  { --tint: rgba(255, 138, 61, 0.14); }
+  31%  { --tint: rgba(255, 255, 255, 0.06); }
+  43%  { --tint: rgba(230, 59, 59, 0.10); }
+  58%  { --tint: rgba(63, 208, 201, 0.08); }
+  72%  { --tint: rgba(255, 194, 75, 0.12); }
+  86%  { --tint: rgba(120, 140, 255, 0.08); }
+}
+.scene.is-warming .scene__beam i { animation: beam-warm 0.9s ease-out; }
+@keyframes beam-warm {
+  0%   { opacity: 0; transform: scale(0.6); transform-origin: 0 0; }
+  30%  { opacity: 0.5; }
+  40%  { opacity: 0.15; }
+  100% { opacity: 1; transform: none; }
+}
+.scene__dust { inset: 0; width: 100%; height: 100%; }
+/* fenêtre de la cabine de projection : d'où sort le faisceau */
+.scene__booth {
+  left: 0; top: 9vh;
+  width: 14px; height: 9vh;
+  background: linear-gradient(to right, #fff6e4, #ffe7c2);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 14px 4px rgba(255, 232, 196, 0.75), 0 0 60px 18px rgba(255, 220, 170, 0.25);
+}
+.scene__booth::after {
+  /* reflet de l'objectif */
+  content: ""; position: absolute; left: 0; top: 50%;
+  width: 30vw; height: 2px; margin-top: -1px;
+  background: linear-gradient(to right, rgba(255, 236, 205, 0.55), transparent);
+  filter: blur(1px);
+}
+:root[data-theme="light"] .scene__booth { opacity: 0; }
+
+/* Clair : plateau studio — fond cyclo, deux boîtes à lumière, marques au sol */
+.scene__soft {
+  top: -24vw;
+  width: 58vw; aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #fffdf7, rgba(255, 251, 240, 0.75) 40%, rgba(255, 251, 240, 0.25) 70%, transparent);
+}
+.scene__soft--l { left: -16vw; }
+.scene__soft--r { right: -16vw; }
+
+:root:not([data-theme="light"]) .scene__soft { opacity: 0; }
+:root[data-theme="light"] .scene__beam,
+:root[data-theme="light"] .scene__dust { opacity: 0; }
+:root[data-theme="light"] .scene {
+  background:
+    radial-gradient(110% 70% at 50% 0%, rgba(255, 253, 247, 0.9), transparent 70%),
+    radial-gradient(ellipse at 50% 40%, transparent 50%, rgba(110, 88, 56, 0.14)),
+    linear-gradient(to bottom, transparent 62%, rgba(120, 98, 62, 0.09));
+}
+
+/* Ombres douces des projecteurs sur le plateau */
 :root[data-theme="light"] .poster__img,
 :root[data-theme="light"] .about__frame,
 :root[data-theme="light"] .credit-card,
@@ -133,7 +224,16 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 30px 44px -28px rgba(70, 54, 28, 0.45), 0 2px 6px rgba(70, 54, 28, 0.08);
 }
 
-/* Changement de thème : trois bandes qui tournent la page */
+/* ---------- Décor du hero : deux illustrations ---------- */
+.set { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.set__dark, .set__light { position: absolute; inset: 0; transition: opacity 0.6s ease; }
+.set svg { display: block; width: 100%; height: 100%; }
+:root[data-theme="light"] .set__dark,
+:root:not([data-theme="light"]) .set__light { opacity: 0; }
+/* sur petit écran, le matériel passerait derrière le texte : on garde le sol */
+@media (max-width: 900px) { .set .gear { display: none; } }
+
+/* Rideau des projecteurs : trois rampes qui s'allument tour à tour */
 .lights {
   position: fixed; inset: 0;
   z-index: 300;
@@ -253,79 +353,68 @@ img { display: block; max-width: 100%; }
 :root[data-theme="light"] .theme-toggle__sun  { display: block; }
 :root[data-theme="light"] .theme-toggle__moon { display: none; }
 
-/* ---------- COUVERTURE : le numéro de la revue ---------- */
+/* ---------- HERO : le viseur ---------- */
 .hero {
-  --cover-bg: #0b0b0c;
-  --cover-ink: var(--yellow);
-  --cover-text: #f1efe8;
+  position: relative;
   min-height: 100svh;
-  display: flex;
-  padding: 5.4rem var(--pad) 2.4rem;
-  background: var(--cover-bg);
-  color: var(--cover-text);
-  overflow-x: clip;
+  display: flex; align-items: center;
+  padding: 8.5rem var(--pad) 5rem;
+  overflow: hidden;
+  isolation: isolate;
 }
-:root[data-theme="light"] .hero { --cover-bg: var(--yellow); --cover-ink: #111; --cover-text: #111; }
-.cover__inner { width: 100%; max-width: var(--maxw); margin: 0 auto; display: flex; flex-direction: column; container-type: inline-size; }
-.cover__top {
-  display: flex; justify-content: space-between; gap: 1rem;
-  padding-bottom: 0.55rem;
-  border-bottom: 3px solid var(--cover-ink);
-  font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--cover-ink);
+/* étalonnage teal & orange + fuite de lumière */
+.hero::before {
+  content: "";
+  position: absolute; inset: 0; z-index: -2;
+  background:
+    radial-gradient(60% 70% at 12% 20%, var(--grade-a), transparent 70%),
+    radial-gradient(55% 65% at 92% 85%, var(--grade-b), transparent 70%);
 }
-.cover__mast {
-  margin: 0.12em 0 0.1em;
-  font-family: var(--display); font-weight: 900; font-stretch: 112%;
-  font-size: clamp(3rem, min(10.4vw, 17vh), 10rem);
-  line-height: 0.86; letter-spacing: -0.02em;
-  text-transform: uppercase; white-space: nowrap;
-  color: var(--cover-ink);
+.hero__leak {
+  position: absolute; z-index: -1;
+  width: 55vmax; height: 55vmax;
+  right: -18vmax; top: -22vmax;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 120, 50, 0.32), rgba(255, 59, 48, 0.08) 45%, transparent 70%);
+  filter: blur(30px);
+  animation: leak 9s ease-in-out infinite alternate;
+  pointer-events: none;
 }
-.cover__body {
-  flex: 1;
-  display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(1.5rem, 4vw, 3.5rem);
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--cover-ink);
-}
-.cover__still { margin: 0; }
-.cover__still img {
-  display: block; width: 100%; height: min(56vh, 100%);
-  object-fit: cover; object-position: 50% 28%;
-  filter: grayscale(1) contrast(1.08);
-  border: 3px solid var(--cover-ink);
-}
-.cover__lines { display: flex; flex-direction: column; align-items: flex-start; gap: 1.1rem; }
-.cover__lead {
-  font-family: var(--display); font-weight: 900; font-stretch: 80%;
-  font-size: clamp(1.8rem, 3.4vw, 3.1rem); line-height: 0.95; text-transform: uppercase;
-}
-.cover__lead b { font-weight: 900; }
-.cover__lead em { font-family: var(--body); font-style: italic; font-weight: 500; text-transform: none; }
-.cover__teasers { list-style: none; width: 100%; border-top: 1px solid var(--cover-ink); }
-.cover__teasers li {
-  padding: 0.65rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--cover-ink) 45%, transparent);
-  font-family: var(--body); font-size: 1.08rem; line-height: 1.35;
-}
-.cover__teasers li span {
-  display: inline-block; margin-right: 0.55rem; padding: 0.12rem 0.45rem;
-  font-family: var(--mono); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-  vertical-align: 0.15em;
-  background: var(--cover-ink); color: var(--cover-bg);
+:root[data-theme="light"] .hero__leak { opacity: 0; }
+@keyframes leak {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  50%  { opacity: 1; }
+  100% { transform: translate(-10vmax, 8vmax) scale(1.2); opacity: 0.55; }
 }
 
+/* Cadre du viseur */
+.vf {
+  position: absolute;
+  inset: 5.2rem calc(var(--pad) * 0.6) 1.6rem;
+  pointer-events: none;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  text-transform: uppercase;
+}
 .vf__c { position: absolute; width: 34px; height: 34px; border: 2px solid var(--ink); opacity: 0.85; }
 .vf__c--tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
 .vf__c--tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
 .vf__c--bl { bottom: 0; left: 0; border-right: 0; border-top: 0; }
 .vf__c--br { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+.vf__row {
+  position: absolute; left: 3rem; top: 0.9rem;
+  display: flex; gap: 1.4rem; align-items: center;
+}
 .vf__rec { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--rec); font-weight: 700; }
 .vf__rec::before {
   content: ""; width: 10px; height: 10px; border-radius: 50%;
   background: var(--rec); animation: blink 1s infinite;
 }
+.vf__tc { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.hero__inner { position: relative; width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 2.5rem; }
 
 .hero__badge {
   display: inline-flex; align-items: center; gap: 0.6rem;
@@ -344,7 +433,75 @@ img { display: block; max-width: 100%; }
   box-shadow: 0 0 0 3px rgba(24, 169, 87, 0.25);
   animation: blink 1.6s infinite;
 }
-.hero__cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 0.6rem; }
+.hero__title {
+  position: relative;
+  margin-top: 2rem;
+  display: flex; flex-direction: column;
+  font-family: var(--display);
+  font-weight: 900;
+  font-stretch: 68%;
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+/* suit aussi la hauteur : le hero tient dans le premier écran */
+.hero__name { font-size: clamp(5.5rem, min(21vw, 23vh), 18rem); display: block; }
+.hero__name--2 {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  margin-left: clamp(1rem, 8vw, 9rem);
+  transition: color 0.4s;
+}
+.hero__title:hover .hero__name--2 { color: var(--ink); }
+.hero__script {
+  position: absolute;
+  left: clamp(9rem, 33vw, 29rem);
+  top: 38%;
+  font-family: var(--script);
+  font-weight: 400; font-stretch: 100%;
+  font-size: clamp(3rem, min(9vw, 10vh), 8rem);
+  color: var(--red);
+  text-transform: none;
+  letter-spacing: 0;
+  transform: rotate(-8deg);
+  text-shadow: 0 4px 30px rgba(230, 59, 59, 0.35);
+  z-index: 1;
+}
+.hero__role {
+  margin-top: 1.8rem;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+.hero__role strong { color: var(--ink); font-weight: 700; }
+.hero__role em { color: var(--ink); font-style: italic; font-family: var(--display); font-weight: 600; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2.2rem; }
+
+.hero__scroll {
+  position: absolute; left: 50%; bottom: 2.4rem; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.25em;
+  color: var(--ink-soft); text-transform: uppercase;
+}
+.hero__scroll span {
+  width: 1px; height: 38px; background: var(--line-2); position: relative; overflow: hidden;
+}
+.hero__scroll span::after {
+  content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%;
+  background: var(--rec); animation: drop 1.6s infinite;
+}
+@keyframes drop { to { top: 100%; } }
+
+/* Barres letterbox qui s'ouvrent */
+.hero__bars::before, .hero__bars::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 50%;
+  background: #000; z-index: 5; pointer-events: none;
+  transition: transform 1.1s cubic-bezier(.7, 0, .2, 1);
+}
+.hero__bars::before { top: 0; }
+.hero__bars::after { bottom: 0; }
+.is-rolling .hero__bars::before { transform: translateY(-100%); }
+.is-rolling .hero__bars::after  { transform: translateY(100%); }
 
 /* ---------- Sections ---------- */
 .section {
@@ -363,16 +520,15 @@ img { display: block; max-width: 100%; }
 .section__head--row { justify-content: space-between; }
 .section__head--row > .section__headmain { display: flex; align-items: flex-end; gap: clamp(1.2rem, 4vw, 3rem); flex-wrap: wrap; }
 
-/* Rubriques de revue : étiquette jaune et numéro de page */
+/* Chapitres façon intertitres de Godard : lettres bleu / blanc / rouge */
 .section__num {
-  display: inline-block;
-  padding: 0.38rem 0.7rem;
-  margin-bottom: 1rem;
-  font-family: var(--mono); font-size: 0.74rem; font-weight: 700;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  background: var(--yellow); color: #111;
+  display: block;
+  font-family: var(--display); font-weight: 800; font-stretch: 100%;
+  font-size: clamp(1rem, 1.5vw, 1.25rem); letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rec);
+  margin-bottom: 0.8rem;
 }
-/* Lettres bleu / blanc / rouge façon intertitres de Godard (carton « Fin ») */
 .godard i { font-style: normal; }
 .godard i:nth-of-type(3n+1) { color: var(--nv-blue); }
 .godard i:nth-of-type(3n+2) { color: var(--ink); }
@@ -392,15 +548,7 @@ img { display: block; max-width: 100%; }
 .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2, .7, .2, 1); }
 .reveal.in { opacity: 1; transform: none; }
 
-/* ---------- 01 · À PROPOS : l'entretien ---------- */
-.about__lead::first-letter {
-  float: left;
-  margin: 0.06em 0.12em 0 0;
-  font-family: var(--display); font-weight: 900; font-stretch: 100%;
-  font-size: 3.3em; line-height: 0.8;
-  color: var(--ink); background: var(--yellow); padding: 0.06em 0.1em 0;
-}
-:root:not([data-theme="light"]) .about__lead::first-letter { color: #111; }
+/* ---------- 01 · À PROPOS ---------- */
 .about__grid {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -961,6 +1109,9 @@ a.contact__card:hover .contact__label { color: var(--rec); }
   text-transform: uppercase;
 }
 
+/* Le Cercle des poètes disparus : la devise sous le carton Fin */
+.fin__motto { margin-top: 0.4rem; font-family: var(--script); font-size: clamp(1.5rem, 3vw, 2.1rem); color: var(--ink-soft); text-transform: none; letter-spacing: 0; }
+
 /* ---------- Footer : fin du film ---------- */
 .footer {
   max-width: var(--maxw); margin: 0 auto;
@@ -1022,6 +1173,24 @@ a.contact__card:hover .contact__label { color: var(--rec); }
 }
 .poster:hover .poster__img img,
 .poster:focus-visible .poster__img img { transform: scale(1.04); filter: none; }
+/* Fight Club : les « brûlures de cigarette », repères de changement de bobine,
+   clignotent dans le coin de l'affiche survolée */
+.poster { position: relative; }
+.poster::after {
+  content: ""; position: absolute; top: 28px; right: 14px; z-index: 2;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 252, 240, 0.95) 0 40%, rgba(18, 16, 14, 0.85) 44% 62%, transparent 66%);
+  opacity: 0; pointer-events: none;
+}
+.poster:hover::after, .poster:focus-visible::after { animation: cue-mark 1.8s steps(1) infinite; }
+@keyframes cue-mark {
+  0%   { opacity: 1; }
+  5%   { opacity: 0; }
+  48%  { opacity: 1; }
+  53%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 /* au survol, deux bandes de pellicule entrent et défilent */
 .poster__img::before, .poster__img::after {
   content: ""; position: absolute; left: 0; right: 0; z-index: 1;
@@ -1187,14 +1356,14 @@ a.contact__card:hover .contact__label { color: var(--rec); }
   .nav { padding-left: 1rem; padding-right: 1rem; }
   .nav__cta { display: none; }
 
-  .hero { padding: 5rem 1rem 2rem; }
-  .cover__top span:nth-child(2) { display: none; }
-  /* deux lignes ; « BAUSCH » tient pile dans la largeur de la couverture */
-  .cover__mast { white-space: normal; font-size: 19.4cqw; line-height: 0.84; }
-  .cover__body { grid-template-columns: 1fr; }
-  .cover__still img { height: 38vh; }
-  .hero__cta { margin-top: 0.4rem; width: 100%; }
+  .vf { inset: 4.4rem 0.6rem 1rem; }
+  .vf__row { left: 1.6rem; }
+  .hero { padding: 6rem 1rem 4rem; align-items: center; }
+  .hero__inner { padding: 0 0.6rem; }
+  .hero__name--2 { -webkit-text-stroke-width: 1.5px; margin-left: 0.6rem; }
+  .hero__script { left: auto; right: 4%; top: 36%; }
   .hero__cta .btn { flex: 1 1 auto; justify-content: center; }
+  .hero__scroll { display: none; }
 
   .about__grid { grid-template-columns: 1fr; }
   .about__skills ul { grid-template-columns: 1fr 1fr; }
