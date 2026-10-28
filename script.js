@@ -146,57 +146,33 @@ document.addEventListener("keydown", (e) => {
 // ---- Theme toggle (salle de montage / feuille de service) ------------
 const themeToggle = document.getElementById("themeToggle");
 if (themeToggle) {
+  const root = document.documentElement;
   themeToggle.addEventListener("click", () => {
-    const cur = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
-    const next = cur === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try { localStorage.setItem("theme", next); } catch (e) {}
+    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    const apply = () => {
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    };
+    if (!document.startViewTransition || reduceMotion) return apply();
+
+    // lumière de salle : le nouveau thème s'ouvre en cercle depuis le bouton
+    const r = themeToggle.getBoundingClientRect();
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    root.classList.add("vt-theme");
+    const vt = document.startViewTransition(apply);
+    vt.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 650, easing: "cubic-bezier(.6, 0, .2, 1)", pseudoElement: "::view-transition-new(root)" }
+      );
+    }).catch(() => {}); // transition sautée (double clic rapide) : le thème est quand même appliqué
+    vt.finished.finally(() => root.classList.remove("vt-theme"));
   });
 }
 
-// ---- Intro : amorce 3-2-1 (une fois par session) ---------------------
-const leader = document.getElementById("leader");
-function rollCamera() { document.body.classList.add("is-rolling"); }
-if (leader) {
-  let seen = false;
-  try { seen = sessionStorage.getItem("leader") === "1"; } catch (e) {}
-  if (seen || reduceMotion) {
-    leader.remove();
-    rollCamera();
-  } else {
-    const num = leader.querySelector(".leader__num");
-    const sweep = leader.querySelector(".leader__sweep");
-    let n = 3;
-    let start = performance.now();
-    let raf;
-    const finish = () => {
-      cancelAnimationFrame(raf);
-      leader.classList.add("done");
-      try { sessionStorage.setItem("leader", "1"); } catch (e) {}
-      setTimeout(rollCamera, 150);
-      setTimeout(() => leader.remove(), 700);
-    };
-    const tick = (t) => {
-      const p = (t - start) / 600; // 0.6 s par chiffre
-      if (p >= 1) {
-        n -= 1;
-        if (n === 0) return finish();
-        num.textContent = n;
-        start = t;
-      }
-      sweep.style.setProperty("--a", `${Math.min(1, p) * 360}deg`);
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    leader.addEventListener("click", finish);
-    document.addEventListener("keydown", function skip() {
-      if (document.body.contains(leader)) finish();
-      document.removeEventListener("keydown", skip);
-    });
-  }
-} else {
-  rollCamera();
-}
+// ---- Ouverture : les bandes noires du hero s'écartent ----------------
+document.body.classList.add("is-rolling");
 
 // ---- Timecode du viseur (temps réel) ---------------------------------
 const tcEl = document.getElementById("tc");
