@@ -19,4 +19,94 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/projets/nouvelle-caledonie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/nouvelle-caledonie.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/nouvelle-caledonie.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/nouvelle-caledonie.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/en/projects/nouvelle-caledonie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/nouvelle-caledonie.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/nouvelle-caledonie.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/nouvelle-caledonie.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/projets/le-lieu-utile.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/le-lieu-utile.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/le-lieu-utile.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/le-lieu-utile.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/en/projects/le-lieu-utile.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/le-lieu-utile.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/le-lieu-utile.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/le-lieu-utile.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/projets/anatomy.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/anatomy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/anatomy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/anatomy.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/en/projects/anatomy.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/anatomy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/anatomy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/anatomy.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/projets/saint-laurent.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/saint-laurent.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/saint-laurent.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/saint-laurent.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/en/projects/saint-laurent.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/saint-laurent.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/saint-laurent.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/saint-laurent.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/projets/tournages.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/tournages.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/tournages.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/tournages.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yuribausch.github.io/portfolio/en/projects/tournages.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://yuribausch.github.io/portfolio/projets/tournages.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yuribausch.github.io/portfolio/en/projects/tournages.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yuribausch.github.io/portfolio/projets/tournages.html" />
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

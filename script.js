@@ -241,6 +241,11 @@ if (edit) {
     fill.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollY / Math.max(1, max)))})`;
 
     // section active = celle qui contient le milieu de l'écran
+    // (page projet : pas de sections, « Projets » reste actif)
+    if (!sections.length) {
+      navLinks.forEach((a) => a.classList.toggle("active", a.hash === "#projects"));
+      return;
+    }
     const mid = scrollY + innerHeight * 0.45;
     let active = 0;
     sections.forEach((sec, i) => { if (sec.offsetTop <= mid) active = i; });
