@@ -143,31 +143,124 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") step(1);
 });
 
-// ---- Theme toggle (salle de montage / feuille de service) ------------
+// ---- Décor : salle de projection (sombre) / plateau studio (clair) ----
+// Le décor est fixe derrière la page ; le CSS montre l'un ou l'autre selon le thème.
+const root = document.documentElement;
+const isDark = () => root.getAttribute("data-theme") !== "light";
+const scene = document.createElement("div");
+scene.className = "scene";
+scene.setAttribute("aria-hidden", "true");
+scene.innerHTML =
+  '<div class="scene__beam"><i></i></div><canvas class="scene__dust"></canvas>' +
+  '<span class="scene__soft scene__soft--l"></span><span class="scene__soft scene__soft--r"></span>' +
+  '<span class="scene__mark scene__mark--a"></span><span class="scene__mark scene__mark--b"></span>';
+document.body.prepend(scene);
+
+// Poussière dans le faisceau du projecteur (même trapèze que .scene__beam i)
+const BEAM = [[0, 0], [0.16, 0], [1, 0.58], [1, 1], [0.62, 1]];
+const inBeam = (x, y) => {
+  let inside = false;
+  for (let i = 0, j = BEAM.length - 1; i < BEAM.length; j = i++) {
+    const [xi, yi] = BEAM[i], [xj, yj] = BEAM[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  return inside;
+};
+const dust = scene.querySelector(".scene__dust");
+const dctx = dust.getContext("2d");
+let motes = [];
+let dustRaf = 0;
+const sizeDust = () => {
+  const dpr = Math.min(2, devicePixelRatio || 1);
+  dust.width = innerWidth * dpr;
+  dust.height = innerHeight * dpr;
+  dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const n = Math.round(Math.min(110, (innerWidth * innerHeight) / 14000));
+  motes = Array.from({ length: n }, () => ({
+    x: Math.random(), y: Math.random(),
+    r: 0.5 + Math.random() * 1.5,
+    vx: (Math.random() - 0.3) * 0.00012, vy: (Math.random() - 0.6) * 0.0001,
+    p: Math.random() * Math.PI * 2,
+  }));
+};
+const drawDust = (t) => {
+  dctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (const m of motes) {
+    if (!reduceMotion) {
+      m.x += m.vx; m.y += m.vy;
+      if (m.x < -0.02) m.x = 1.02; if (m.x > 1.02) m.x = -0.02;
+      if (m.y < -0.02) m.y = 1.02; if (m.y > 1.02) m.y = -0.02;
+    }
+    if (!inBeam(m.x, m.y)) continue;
+    const far = Math.hypot(m.x, m.y) / 1.41; // plus loin du projecteur = plus diffus
+    const a = (0.55 - far * 0.35) * (0.6 + 0.4 * Math.sin(t / 900 + m.p));
+    dctx.fillStyle = `rgba(255, 238, 214, ${Math.max(0, a)})`;
+    dctx.beginPath();
+    dctx.arc(m.x * innerWidth, m.y * innerHeight, m.r, 0, Math.PI * 2);
+    dctx.fill();
+  }
+};
+const loopDust = (t) => { drawDust(t); dustRaf = requestAnimationFrame(loopDust); };
+const syncDust = () => {
+  cancelAnimationFrame(dustRaf);
+  if (!isDark() || document.hidden) return;
+  if (reduceMotion) drawDust(0);
+  else dustRaf = requestAnimationFrame(loopDust);
+};
+sizeDust();
+syncDust();
+addEventListener("resize", () => { sizeDust(); syncDust(); });
+document.addEventListener("visibilitychange", syncDust);
+
+// ---- Changement de thème : les projecteurs ---------------------------
+// sombre -> clair : le projecteur s'éteint, puis le plateau s'allume en trois « clac »
+// clair -> sombre : le plateau coupe au noir, puis la lampe du projecteur démarre
 const themeToggle = document.getElementById("themeToggle");
 if (themeToggle) {
-  const root = document.documentElement;
-  themeToggle.addEventListener("click", () => {
-    const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-    const apply = () => {
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
-    };
-    if (!document.startViewTransition || reduceMotion) return apply();
+  const fx = document.createElement("div");
+  fx.className = "lights";
+  fx.setAttribute("aria-hidden", "true");
+  fx.innerHTML = "<i></i><i></i><i></i>";
+  document.body.appendChild(fx);
+  const banks = [...fx.children];
+  let busy = false;
 
-    // lumière de salle : le nouveau thème s'ouvre en cercle depuis le bouton
-    const r = themeToggle.getBoundingClientRect();
-    const x = r.left + r.width / 2, y = r.top + r.height / 2;
-    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-    root.classList.add("vt-theme");
-    const vt = document.startViewTransition(apply);
-    vt.ready.then(() => {
-      root.animate(
-        { clipPath: [`circle(0 at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-        { duration: 650, easing: "cubic-bezier(.6, 0, .2, 1)", pseudoElement: "::view-transition-new(root)" }
-      );
-    }).catch(() => {}); // transition sautée (double clic rapide) : le thème est quand même appliqué
-    vt.finished.finally(() => root.classList.remove("vt-theme"));
+  const apply = (next) => {
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    syncDust();
+  };
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const run = (el, frames, ms, easing = "linear") =>
+    el.animate(frames, { duration: ms, easing, fill: "forwards" }).finished;
+
+  themeToggle.addEventListener("click", async () => {
+    if (busy) return;
+    const next = isDark() ? "light" : "dark";
+    if (reduceMotion) return apply(next);
+    busy = true;
+    if (next === "light") {
+      await Promise.all(banks.map((b) => run(b, [{ opacity: 0 }, { opacity: 1 }], 220, "ease-in")));
+      apply(next);
+      await wait(260);
+      await Promise.all(banks.map((b, i) => wait(i * 230).then(() => run(b, [
+        { opacity: 1, background: "#000" },
+        { opacity: 1, background: "#fffaf0", offset: 0.12 },
+        { opacity: 0, background: "#fffaf0" },
+      ], 560, "ease-out"))));
+    } else {
+      await Promise.all(banks.map((b) => run(b, [{ opacity: 0 }, { opacity: 1 }], 70)));
+      apply(next);
+      await wait(380);
+      scene.classList.add("is-warming");
+      await Promise.all(banks.map((b) => run(b, [
+        { opacity: 1 }, { opacity: 0.55, offset: 0.2 }, { opacity: 1, offset: 0.3 },
+        { opacity: 0.25, offset: 0.55 }, { opacity: 0.7, offset: 0.65 }, { opacity: 0 },
+      ], 720)));
+      setTimeout(() => scene.classList.remove("is-warming"), 900);
+    }
+    banks.forEach((b) => b.getAnimations().forEach((a) => a.cancel()));
+    busy = false;
   });
 }
 
